@@ -1,5 +1,5 @@
 
-@include("nav")
+
 
 
 <body>

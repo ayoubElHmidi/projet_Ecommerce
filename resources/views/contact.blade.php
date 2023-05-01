@@ -1,8 +1,5 @@
-@include("nav")
-<body>
- 
-    @include('layouts.topbar')
 
+<body>
     @include('layouts.navbarhome')
     <div class="container-fluid bg-secondary mb-5">
         <div class="d-flex flex-column align-items-center justify-content-center" style="min-height: 300px">
