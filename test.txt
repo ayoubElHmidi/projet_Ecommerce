@@ -1,3 +1,0 @@
-test asat 
-star 22
-start
