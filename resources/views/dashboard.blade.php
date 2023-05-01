@@ -1,4 +1,4 @@
-@include("layouts.navigation")
+
 @include('layouts.navbarhome')
 <x-app-layout>
     <x-slot name="header">
