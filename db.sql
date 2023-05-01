@@ -1,5 +1,12 @@
 create DATABASE projet_ecommerce;
 use projet_ecommerce;
+create table users(
+    id int primary key auto_increment,
+    name varchat (100),
+    email VARCHAR(100),
+    email_verified_at timestamp null ,
+    password varchar(100)
+);
 create table categories (
     idCat int primary key auto_increment ,
     nomCat VARCHAR(100),
@@ -16,14 +23,6 @@ CREATE table produits(
     idCat int,  
     Foreign Key (idCat) REFERENCES categories(idCat)
 );
-create table users(
-    id int primary key auto_increment,
-    name varchat (100),
-    email VARCHAR(100),
-    email_verified_at timestamp null ,
-    password varchar(100)
-);
-
 create Table panies(
     idPanie int PRIMARY key auto_increment,
     id int,
