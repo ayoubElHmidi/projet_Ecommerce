@@ -15,12 +15,14 @@ use App\Http\Controllers\HomeController;
 */
 
 
+
 Route::get('/',[HomeController::class,'index'])->name('index');
 Route::get('/cart',[HomeController::class,'cart'])->name('cart');
 Route::get('/checkout',[HomeController::class,'checkout'])->name('checkout');
 Route::get('/contact',[HomeController::class,'contact'])->name('contact');
 Route::get('/detail',[HomeController::class,'detail'])->name('detail');
 Route::get('/shop',[HomeController::class,'shop'])->name('shop');
+
 
 
 Route::get('/dashboard', function () {
