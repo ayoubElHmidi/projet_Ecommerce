@@ -40,3 +40,11 @@ create table commandes(
     Foreign Key (id) REFERENCES users(id),
     Foreign Key (idPanie) REFERENCES panies(idPanie)
 );
+
+select * from produits where idCat = 1
+$produits = DB::table('produits')
+                ->where('idCat', '=', '$idCat')
+                ->get();
+
+
+$produits = DB::table('produits')->get();

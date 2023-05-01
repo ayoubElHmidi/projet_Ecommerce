@@ -40,14 +40,6 @@
                     <div class="navbar-nav mr-auto py-0">
                         <a href="{{ route('index') }}"  class="nav-item nav-link active">Home</a>
                         <a href="{{ route('shop') }}"  class="nav-item nav-link">Shop</a>
-                        <a href="{{ route('detail') }}"  class="nav-item nav-link">Shop Detail</a>
-                        <div class="nav-item dropdown">
-                            <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Pages</a>
-                            <div class="dropdown-menu rounded-0 m-0">
-                                <a href="{{ route('cart') }}"  class="dropdown-item">Shopping Cart</a>
-                                <a href="{{ route('checkout') }}"  class="dropdown-item">Checkout</a>
-                            </div>
-                        </div>
                         <a href="{{ route('contact') }}" class="nav-item nav-link">Contact</a>
                     </div>
                     <div class="navbar-nav ml-auto py-0">
