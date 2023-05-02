@@ -30,7 +30,11 @@
     
     <body class="font-sans antialiased">
         <div class="min-h-screen bg-gray-100 dark:bg-gray-900">
+<<<<<<< HEAD
             @include('layouts.navigation')
+=======
+
+>>>>>>> 3461a078e632c07fc9440f3a362bdf12c1caa95c
 
             <!-- Page Heading -->
             @if (isset($header))

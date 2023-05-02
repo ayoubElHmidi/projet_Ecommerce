@@ -3,6 +3,10 @@
 
 
 <body>
+<<<<<<< HEAD
+=======
+ 
+>>>>>>> 3461a078e632c07fc9440f3a362bdf12c1caa95c
     @include('layouts.navbarhome')
     <div class="container-fluid pt-5">
         <div class="row px-xl-5">
