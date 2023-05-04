@@ -3,6 +3,7 @@
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\AdminController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -34,5 +35,13 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
+
+Route::get('/admin', [AdminController::class, 'admin_index'])
+    //->middleware(['auth', 'verified'])
+    ->name('admin');
+Route::get('/admin/create', [AdminController::class,'create'])->name('admin.create');
+Route::post('/admin', [AdminController::class, 'store'])->name('admin.store');
+
+
 
 require __DIR__.'/auth.php';
