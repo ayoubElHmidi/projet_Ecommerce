@@ -43,4 +43,13 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+    public function panies()
+{
+    return $this->hasMany(Panie::class, 'id');
+}
+public function commandes()
+{
+    return $this->hasMany(Commande::class, 'id');
+}
+
 }

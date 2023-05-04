@@ -3,7 +3,12 @@
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
+<<<<<<< HEAD
 use App\Http\Controllers\AdminController;
+=======
+use App\Http\Controllers\ProduitController;
+
+>>>>>>> b354e83d3faae4a86225dfa936ca9f662e951a6a
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -22,7 +27,7 @@ Route::get('/cart',[HomeController::class,'cart'])->name('cart');
 Route::get('/checkout',[HomeController::class,'checkout'])->name('checkout');
 Route::get('/contact',[HomeController::class,'contact'])->name('contact');
 Route::get('/detail',[HomeController::class,'detail'])->name('detail');
-Route::get('/shop',[HomeController::class,'shop'])->name('shop');
+Route::get('/shop',[ProduitController::class,'shop'])->name('shop');
 
 
 
