@@ -4,6 +4,7 @@ use Illuminate\Http\Request;
 use App\Models\User;
 use Illuminate\View\View;
 use Illuminate\Support\Facades\Gate;
+use Illuminate\Http\RedirectResponse;
 
 class AdminController extends Controller
 {
@@ -25,13 +26,13 @@ class AdminController extends Controller
 
         User::create($validatedData);
 
-        return redirect('/admin')->with('success', 'Nouvel administrateur ajouté avec succès.');
+        return redirect()->route('admin')->with('success', 'Nouvel administrateur ajouté avec succès.');
     }
-    public function admin_index(User $user): View
+    public function admin_index(User $user): RedirectResponse
     {
         if (!Gate::allows('access-admin', $user)) {
-            return view("/dashboard");
+            return redirect(route('dashboard'));
         }
-        return view("fireshop.admin");
+        return redirect(route('admine'));
     }
 }

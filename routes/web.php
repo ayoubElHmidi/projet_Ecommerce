@@ -41,6 +41,15 @@ Route::middleware('auth')->group(function () {
 Route::get('/admin', [AdminController::class, 'admin_index'])
     //->middleware(['auth', 'verified'])
     ->name('admin');
+    
+Route::get('/admin-panel', 
+    function(){
+        return view("fireshop.admin");
+    }
+)
+//->middleware(['auth', 'verified'])
+->name('admine');
+
 Route::get('/admin/create', [AdminController::class,'create'])->name('admin.create');
 Route::post('/admin', [AdminController::class, 'store'])->name('admin.store');
 
