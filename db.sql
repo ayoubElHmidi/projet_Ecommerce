@@ -5,6 +5,7 @@ create table users(
     name varchat (100),
     email VARCHAR(100),
     email_verified_at timestamp null ,
+    is_admin boolean default 0,
     password varchar(100)
 );
 create table categories (
