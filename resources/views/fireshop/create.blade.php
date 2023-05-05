@@ -25,10 +25,10 @@
                     <x-input-error :messages="$errors->get('message')" class="mt-2" />
                         <label for="categorie">categorie :</label><br>
                         <select name="categorie" id="categorie">
-                            <option value="value1">value1</option>
-                            <option value="value2">value2</option>
-                            <option value="value3">value3</option>
-                            <option value="value4">valuE4</option>
+                            <option value="value1">1</option>
+                            <option value="value2">2</option>
+                            <option value="value3">3</option>
+                            <option value="value4">4</option>
                         </select> 
                     <x-primary-button class="mt-4">{{ __('Publier') }}</x-primary-button>
                     <a href="{{ route('admin') }}">Retour</a>

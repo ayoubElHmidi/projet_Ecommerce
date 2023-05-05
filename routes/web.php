@@ -3,12 +3,9 @@
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
-<<<<<<< HEAD
 use App\Http\Controllers\AdminController;
-=======
 use App\Http\Controllers\ProduitController;
 
->>>>>>> b354e83d3faae4a86225dfa936ca9f662e951a6a
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -47,6 +44,6 @@ Route::get('/admin', [AdminController::class, 'admin_index'])
 Route::get('/admin/create', [AdminController::class,'create'])->name('admin.create');
 Route::post('/admin', [AdminController::class, 'store'])->name('admin.store');
 
-
+Route::resource("products", ProduitController::class);
 
 require __DIR__.'/auth.php';
