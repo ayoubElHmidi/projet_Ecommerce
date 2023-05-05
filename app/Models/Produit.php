@@ -21,7 +21,7 @@ class Produit extends Model
         'qtePro',
         'idCat',
     ];
-    public $tikestamp = false ;
+    public $timestamps = false;
     public function categorie()
     {
         return $this->belongsTo(Categorie::class, 'idCat');
