@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Product;
+use App\Models\Produit;
 use App\Models\User;
 use Illuminate\View\View;
 use Illuminate\Http\Request;
@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\Gate;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Storage;
 
-class ProduitController extends Controller
+class ProductController extends Controller
 {
     public function shop()
     {
@@ -19,7 +19,7 @@ class ProduitController extends Controller
     }
     
 
-    public function index(Product $product): View
+    public function index(Produit $product): View
     {
         return view("fireshop.index");
     }
@@ -41,21 +41,24 @@ class ProduitController extends Controller
     public function store(Request $request): RedirectResponse
     {
         $this->validate($request, [
-            'name' => 'required|string|max:255',
-            'price' => 'required|numeric',
-            'description' => 'required|string|max:10000',
-            'picture' => 'image|max:1024',
-            'categorie' =>'required|string|max:255',
+            'nomPro' => 'required|string|max:255',
+            'descriptionPro' => 'required|string|max:10000',
+            'photo' => 'image|max:1024',
+            'prixPro' => 'required|numeric',
+            'qtePro' => 'required|numeric',
+            'idCat' =>'required|string|max:255',
         ]);
 
-        $imgpath = $request->file('picture')->storeAs('public', $request->file('picture')->getClientOriginalName());
+        $imgpath = $request->file('photo')->storeAs('public', $request->file('photo')->getClientOriginalName());
         $imgpath = str_replace("public/", "storage/", $imgpath);
-        Product::create([
-            "name" => $request->name,
-            "price" => $request->price,
-            "description" => $request->description,
-            "picture" => $imgpath,
-            'categorie' => $request->categorie,
+
+        Produit::create([
+            "nomPro" => $request->nomPro,
+            "descriptionPro" => $request->descriptionPro,
+            "photo" => $imgpath,
+            "prixPro" => $request->prixPro,
+            'qtePro' => $request->qtePro,
+            'idCat' => $request->idCat,
         ]);
         return redirect(route('admin'));
     }
@@ -63,7 +66,7 @@ class ProduitController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Product $product): View
+    public function show(Produit $product): View
     {
         return view("fireshop.show", compact("product"));
     }
@@ -71,7 +74,7 @@ class ProduitController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Product $product): View
+    public function edit(Produit $product): View
     {
         // $this->authorize('update', $product);
 
@@ -83,13 +86,15 @@ class ProduitController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Product $product): RedirectResponse
+    public function update(Request $request, Produit $product): RedirectResponse
     {
         $rules = [
-            'name' => 'required|string|max:255',
-            'price' => 'required|numeric',
-            'description' => 'required|string|max:10000',
-            'categorie' =>'required|string|max:255',
+            'nomPro' => 'required|string|max:255',
+            'descriptionPro' => 'required|string|max:10000',
+            'photo' => 'image|max:1024',
+            'prixPro' => 'required|numeric',
+            'qtePro' => 'required|numeric',
+            'idCat' =>'required|string|max:255',
         ];
 
         if ($request->hasFile('picture')) {
@@ -112,11 +117,12 @@ class ProduitController extends Controller
         // dd($imgpath);
 
         $productData = [
-            "name" => $request->name,
-            "price" => $request->price,
-            "description" => $request->description,
-            "picture" => $imgpath,
-            'categorie' => $request->categorie,
+            "nomPro" => $request->nomPro,
+            "descriptionPro" => $request->descriptionPro,
+            "photo" => $imgpath,
+            "prixPro" => $request->prixPro,
+            'qtePro' => $request->qtePro,
+            'idCat' => $request->idCat,
         ];
 
         $product->update($productData);
@@ -127,7 +133,7 @@ class ProduitController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Product $product): RedirectResponse
+    public function destroy(Produit $product): RedirectResponse
     {
         $product->delete();
 

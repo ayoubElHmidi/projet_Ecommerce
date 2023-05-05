@@ -10,25 +10,34 @@
             <div class="max-w-5xl mx-auto p-4 sm:p-6 lg:p-8">
                 <form method="POST" action="{{ route('products.store') }}" enctype="multipart/form-data">
                     @csrf
-                    <label for="name">Nom :</label><br>
-                    <input type="text" name="name" id="name" value=""
+                    <label for="nomPro">Nom :</label><br>
+                    <input type="text" name="nomPro" id="nomPro" value=""
                            class="block w-full border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm">
-                    <label for="price">Prix :</label><br>
-                    <input type="text" name="price" id="price" value=""
-                           class="block w-full border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm">
-                    <label for="picture">Illustration :</label>
-                    <input type="file" name="picture" id="picture">
+
+                    <label for="descriptionPro">Description :</label>
+                    <textarea name="descriptionPro" id="descriptionPro" rows=5
+                        class="block w-full border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm"></textarea>
+
+                    <label for="photo">Illustration :</label>
+                    <input type="file" name="photo" id="photo">
                     <br>
-                    <label for="description">Description :</label>
-                    <textarea name="description" id="description" rows=5
-                              class="block w-full border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm"></textarea>
+
+                    <label for="qtePro">qte Produit :</label><br>
+                    <input type="text" name="qtePro" id="qtePro" value=""
+                            class="block w-full border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm">
+                            
+                    <label for="prixPro">Prix :</label><br>
+                    <input type="text" name="prixPro" id="prixPro" value=""
+                           class="block w-full border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm">
+
+                    
                     <x-input-error :messages="$errors->get('message')" class="mt-2" />
-                        <label for="categorie">categorie :</label><br>
-                        <select name="categorie" id="categorie">
-                            <option value="value1">1</option>
-                            <option value="value2">2</option>
-                            <option value="value3">3</option>
-                            <option value="value4">4</option>
+                        <label for="idCat">categorie :</label><br>
+                        <select name="idCat" id="idCat">
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
                         </select> 
                     <x-primary-button class="mt-4">{{ __('Publier') }}</x-primary-button>
                     <a href="{{ route('admin') }}">Retour</a>

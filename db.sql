@@ -2,7 +2,7 @@ create DATABASE projet_ecommerce;
 use projet_ecommerce;
 create table users(
     id int primary key auto_increment,
-    name varchat (100),
+    name varchar(100),
     email VARCHAR(100),
     email_verified_at timestamp null ,
     is_admin boolean default 0,
