@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Produit;
+use App\Models\Categorie;
 use App\Models\User;
 use Illuminate\View\View;
 use Illuminate\Http\Request;
@@ -32,7 +33,8 @@ class ProductController extends Controller
      */
     public function create(): View
     {
-        return view("fireshop.create");
+        $data=Categorie::all();
+        return view("fireshop.create",compact("data"));
     }
 
     /**
@@ -46,7 +48,7 @@ class ProductController extends Controller
             'photo' => 'image|max:1024',
             'prixPro' => 'required|numeric',
             'qtePro' => 'required|numeric',
-            'idCat' =>'required|string|max:255',
+            'idCat' =>'required|numeric',
         ]);
 
         $imgpath = $request->file('photo')->storeAs('public', $request->file('photo')->getClientOriginalName());
@@ -94,7 +96,7 @@ class ProductController extends Controller
             'photo' => 'image|max:1024',
             'prixPro' => 'required|numeric',
             'qtePro' => 'required|numeric',
-            'idCat' =>'required|string|max:255',
+            'idCat' =>'required|numeric',
         ];
 
         if ($request->hasFile('picture')) {
