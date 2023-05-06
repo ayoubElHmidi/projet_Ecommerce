@@ -3,7 +3,11 @@
 
 
 <body>
+    @foreach ($data as $item)
+        <p>{{$item->nomCat}}</p>
+    @endforeach
     @include('layouts.navbarhome')
+    
     <div class="container-fluid pt-5">
         <div class="row px-xl-5">
             <!-- Shop Sidebar Start -->

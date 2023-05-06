@@ -15,10 +15,11 @@ class ProductController extends Controller
 {
     public function shop()
     {
-        $produits = Produit::all();
-        return view('shop', ['produits' => $produits]);
+        $data = Categorie::all();
+        return view('shop', ['data' => $data]);
     }
     
+
 
     public function index(Produit $product): View
     {
