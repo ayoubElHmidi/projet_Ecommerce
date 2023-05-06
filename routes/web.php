@@ -59,5 +59,3 @@ Route::resource("products", ProductController::class);
 require __DIR__.'/auth.php';
 
 //------                               ayoub                      ------
-
-Route::get('/shop',[ProductController::class,'prod'])->name('shop');

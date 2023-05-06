@@ -10,7 +10,7 @@
                 <div class="navbar-nav w-100 overflow-hidden" style="height: 410px">
                     <div class="dropdown-menu position-absolute bg-secondary border-0 rounded-0 w-100 m-0">
                     </div>
-                    @foreach ($data as $item)
+                    @foreach ($categories as $item)
                         <a href="" class="nav-item nav-link">{{$item->nomCat}}</a>
                     @endforeach
 

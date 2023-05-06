@@ -9,8 +9,8 @@ use App\Models\Categorie;
 class HomeController extends Controller
 {
     public function index(){
-        $data = Categorie::all();
-        return view('index',['data' => $data]);
+        $categories = Categorie::all();
+        return view('index',['categories' => $categories]);
     }
     public function cart(){
         return view('cart');
