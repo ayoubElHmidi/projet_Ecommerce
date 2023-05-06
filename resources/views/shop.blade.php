@@ -5,7 +5,6 @@
 <body>
 
     @include('layouts.navbarhome')
-    
     <div class="container-fluid pt-5">
         <div class="row px-xl-5">
             <!-- Shop Sidebar Start -->
@@ -156,8 +155,6 @@
                         </div>
                     </div>
                     @foreach ($data as $prod)
-                        
-                   
                     @isset($data)
                     <div class="col-lg-4 col-md-6 col-sm-12 pb-1">
                         <div class="card product-item border-0 mb-4">
