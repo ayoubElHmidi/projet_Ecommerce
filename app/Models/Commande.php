@@ -9,17 +9,17 @@ class Commande extends Model
 {
     use HasFactory;
 
-    protected $table = 'commandes'; // nom de la table
+    protected $table = 'commandes'; 
 
-    protected $primaryKey = 'idCom'; // nom de la clé primaire
+    protected $primaryKey = 'idCom';
 
-    protected $fillable = [ // liste des colonnes modifiables
-        'id',
+    protected $fillable = [ 
+        'id',                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                
         'idPanie',
         'dateCom',
     ];
 
-    public $timestamps = false; // ignore le timestamp
+    public $timestamps = false; 
 
     public function user()
     {
