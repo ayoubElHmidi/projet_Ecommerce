@@ -51,9 +51,22 @@ class ProductController extends Controller
             'qtePro' => 'required|numeric',
             'idCat' =>'required|numeric',
         ]);
-
-        $imgpath = $request->file('photo')->storeAs('public', $request->file('photo')->getClientOriginalName());
-        $imgpath = str_replace("public/", "storage/", $imgpath);
+        
+        switch($request->idCat){
+            case 1 : $imgpath = $request->file('photo')->storeAs('public/femmes', $request->file('photo')->getClientOriginalName());
+            break;
+            case 2 : $imgpath = $request->file('photo')->storeAs('public/hommes', $request->file('photo')->getClientOriginalName());
+            break;
+            case 3 : $imgpath = $request->file('photo')->storeAs('public/enfants', $request->file('photo')->getClientOriginalName());
+            break;
+            case 4 : $imgpath = $request->file('photo')->storeAs('public/vetementSport', $request->file('photo')->getClientOriginalName());
+            break;
+            case 5 : $imgpath = $request->file('photo')->storeAs('public/accessoires', $request->file('photo')->getClientOriginalName());
+            break;
+            case 6 : $imgpath = $request->file('photo')->storeAs('public/chaussures', $request->file('photo')->getClientOriginalName());
+        }
+        $imgpath = str_replace("public", "storage", $imgpath);
+        
 
         Produit::create([
             "nomPro" => $request->nomPro,
@@ -100,21 +113,21 @@ class ProductController extends Controller
             'idCat' =>'required|numeric',
         ];
 
-        if ($request->hasFile('picture')) {
-            $rules['picture'] = 'image|max:1024';
+        if ($request->hasFile('photo')) {
+            $rules['photo'] = 'image|max:1024';
         }
 
         $this->validate($request, $rules);
 
         $imgpath = "";
 
-        if ($request->hasFile('picture')) {
-            $imgpath = Storage::putFile('img', $request->file('picture'));
-            if ($product->picture) {
-                Storage::delete($product->picture);
+        if ($request->hasFile('photo')) {
+            $imgpath = Storage::putFile('img', $request->file('photo'));
+            if ($product->photo) {
+                Storage::delete($product->photo);
             }
         } else {
-            $imgpath = $product->picture;
+            $imgpath = $product->photo;
         }
 
         // dd($imgpath);

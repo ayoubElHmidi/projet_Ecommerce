@@ -4,10 +4,13 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Personne;
+use App\Models\Categorie;
+
 class HomeController extends Controller
 {
     public function index(){
-        return view('index');
+        $data = Categorie::all();
+        return view('index',['data' => $data]);
     }
     public function cart(){
         return view('cart');
