@@ -34,10 +34,9 @@
                     <x-input-error :messages="$errors->get('message')" class="mt-2" />
                         <label for="idCat">categorie :</label><br>
                         <select name="idCat" id="idCat">
-                            <option value="1">1</option>
-                            <option value="2">2</option>
-                            <option value="3">3</option>
-                            <option value="4">4</option>
+                            @foreach ($data as $item)
+                            <option value="{{$item->idCat}}">{{$item->nomCat}}</option>
+                            @endforeach
                         </select> 
                     <x-primary-button class="mt-4">{{ __('Publier') }}</x-primary-button>
                     <a href="{{ route('admin') }}">Retour</a>

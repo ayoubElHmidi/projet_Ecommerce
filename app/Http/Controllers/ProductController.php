@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Produit;
+use App\Models\Categorie;
 use App\Models\User;
 use Illuminate\View\View;
 use Illuminate\Http\Request;
@@ -14,10 +15,11 @@ class ProductController extends Controller
 {
     public function shop()
     {
-        $produits = Produit::all();
-        return view('shop', ['produits' => $produits]);
+        $data = Categorie::all();
+        return view('shop', ['data' => $data]);
     }
     
+
 
     public function index(Produit $product): View
     {
@@ -32,7 +34,8 @@ class ProductController extends Controller
      */
     public function create(): View
     {
-        return view("fireshop.create");
+        $data=Categorie::all();
+        return view("fireshop.create",compact("data"));
     }
 
     /**
@@ -46,7 +49,11 @@ class ProductController extends Controller
             'photo' => 'image|max:1024',
             'prixPro' => 'required|numeric',
             'qtePro' => 'required|numeric',
+<<<<<<< HEAD
             'idCat' =>'required|numeric|max:255',
+=======
+            'idCat' =>'required|numeric',
+>>>>>>> 1e060f296b109bcc9bccef69dd98d6fa8c47125f
         ]);
 
         $imgpath = $request->file('photo')->storeAs('public', $request->file('photo')->getClientOriginalName());
@@ -94,7 +101,7 @@ class ProductController extends Controller
             'photo' => 'image|max:1024',
             'prixPro' => 'required|numeric',
             'qtePro' => 'required|numeric',
-            'idCat' =>'required|string|max:255',
+            'idCat' =>'required|numeric',
         ];
 
         if ($request->hasFile('picture')) {
