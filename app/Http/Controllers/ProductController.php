@@ -11,12 +11,14 @@ use Illuminate\Support\Facades\Gate;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Storage;
 
+
 class ProductController extends Controller
 {
     public function shop()
     {
         $data = Categorie::all();
         return view('shop', ['data' => $data]);
+
     }
     
 
@@ -49,11 +51,10 @@ class ProductController extends Controller
             'photo' => 'image|max:1024',
             'prixPro' => 'required|numeric',
             'qtePro' => 'required|numeric',
-<<<<<<< HEAD
             'idCat' =>'required|numeric|max:255',
-=======
+
             'idCat' =>'required|numeric',
->>>>>>> 1e060f296b109bcc9bccef69dd98d6fa8c47125f
+
         ]);
 
         $imgpath = $request->file('photo')->storeAs('public', $request->file('photo')->getClientOriginalName());

@@ -9,7 +9,9 @@
             <nav class="collapse show navbar navbar-vertical navbar-light align-items-start p-0 border border-top-0 border-bottom-0" id="navbar-vertical">
                 <div class="navbar-nav w-100 overflow-hidden" style="height: 410px">
                     <div class="dropdown-menu position-absolute bg-secondary border-0 rounded-0 w-100 m-0">
-                        
+                        @foreach ($data as $item)
+                        <a href="" class="dropdown-item">{{$item->nomCat}}</a>
+                    @endforeach
                     </div>
                 </div>
             </nav>

@@ -3,9 +3,7 @@
 
 
 <body>
-    @foreach ($data as $item)
-        <p>{{$item->nomCat}}</p>
-    @endforeach
+
     @include('layouts.navbarhome')
     
     <div class="container-fluid pt-5">
