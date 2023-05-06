@@ -13,6 +13,12 @@
                         <a href="" class="dropdown-item">{{$item->nomCat}}</a>
                     @endforeach
                     </div>
+<<<<<<< HEAD
+=======
+                    @foreach ($data as $item)
+                        <a href="" class="nav-item nav-link">{{$item->nomCat}}</a>
+                    @endforeach
+>>>>>>> 2e427f36656555d442e1ceb160189f97b0960b2b
                 </div>
             </nav>
         </div>
