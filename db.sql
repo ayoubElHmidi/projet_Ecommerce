@@ -1,5 +1,6 @@
 create DATABASE projet_ecommerce;
 use projet_ecommerce;
+<<<<<<< HEAD
     create table users(
         id int primary key auto_increment,
         name varchar (100),
@@ -14,6 +15,22 @@ use projet_ecommerce;
         descriptionCat text ,
         photoCat varchar(100)
     );
+=======
+create table users(
+    id int primary key auto_increment,
+    name varchar(100),
+    email VARCHAR(100),
+    email_verified_at timestamp null ,
+    is_admin boolean default 0,
+    password varchar(100)
+);
+create table categories (
+    idCat int primary key auto_increment ,
+    nomCat VARCHAR(100),
+    descriptionCat text ,
+    photoCat varchar(100)
+);
+>>>>>>> refs/remotes/origin/main
 CREATE table produits(
     idPro int primary key auto_increment, 
     nomPro varchar(100),

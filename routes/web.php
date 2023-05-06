@@ -4,7 +4,7 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\AdminController;
-use App\Http\Controllers\ProduitController;
+use App\Http\Controllers\ProductController;
 
 /*
 |--------------------------------------------------------------------------
@@ -24,7 +24,7 @@ Route::get('/cart',[HomeController::class,'cart'])->name('cart');
 Route::get('/checkout',[HomeController::class,'checkout'])->name('checkout');
 Route::get('/contact',[HomeController::class,'contact'])->name('contact');
 Route::get('/detail',[HomeController::class,'detail'])->name('detail');
-Route::get('/shop',[ProduitController::class,'shop'])->name('shop');
+Route::get('/shop',[ProductController::class,'shop'])->name('shop');
 
 
 
@@ -41,9 +41,18 @@ Route::middleware('auth')->group(function () {
 Route::get('/admin', [AdminController::class, 'admin_index'])
     //->middleware(['auth', 'verified'])
     ->name('admin');
+    
+Route::get('/admin-panel', 
+    function(){
+        return view("fireshop.admin");
+    }
+)
+//->middleware(['auth', 'verified'])
+->name('admine');
+
 Route::get('/admin/create', [AdminController::class,'create'])->name('admin.create');
 Route::post('/admin', [AdminController::class, 'store'])->name('admin.store');
 
-Route::resource("products", ProduitController::class);
+Route::resource("products", ProductController::class);
 
 require __DIR__.'/auth.php';
