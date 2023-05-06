@@ -18,6 +18,8 @@ use App\Http\Controllers\ProductController;
 |
 */
 
+Route::get('/recherche',[ProductController::class,'recherchePro'])->name('recherchePro');
+
 
 
 Route::get('/',[HomeController::class,'index'])->name('index');

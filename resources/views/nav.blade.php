@@ -64,12 +64,15 @@
                 </a>
             </div>
             <div class="col-lg-6 col-6 text-left">
-                <form action="">
+                <!---->
+                <form action="{{route('recherchePro')}}">
                     <div class="input-group">
-                        <input type="text" class="form-control" placeholder="Search for products">
+                        <input type="text" class="form-control" name="recherchePro" placeholder="Search for products">
                         <div class="input-group-append">
                             <span class="input-group-text bg-transparent text-primary">
-                                <i class="fa fa-search"></i>
+                                <button type="submit">
+                                    <i class="fa fa-search"></i>
+                                </button>
                             </span>
                         </div>
                     </div>

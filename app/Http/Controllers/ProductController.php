@@ -27,7 +27,13 @@ class ProductController extends Controller
         return view("fireshop.index");
     }
 
-
+    function recherchePro(Request $req){
+            $produits=Produit::query()->where("nomPro","like","%".$req["recherchePro"]."%")->get();
+            $categories = Categorie::all();
+            if($produits){
+                return view("/shop",["produits"=>$produits,'categories' => $categories]);
+            }
+    }
     
 
     /**
