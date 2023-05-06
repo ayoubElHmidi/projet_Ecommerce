@@ -39,7 +39,7 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-Route::get('/admin', [AdminController::class, 'admin_index'])
+Route::get('/admin', [AdminController::class,'admin_index'])
     //->middleware(['auth', 'verified'])
     ->name('admin');
     
@@ -60,3 +60,4 @@ require __DIR__.'/auth.php';
 
 //------                               ayoub                      ------
 
+Route::get('/shop',[ProductController::class,'prod'])->name('shop');

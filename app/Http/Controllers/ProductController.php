@@ -20,7 +20,12 @@ class ProductController extends Controller
         return view('shop', ['data' => $data]);
 
     }
-    
+    public function prod()
+    {
+        $data = Produit::all();
+        return view('shop', ['data' => $data]);
+
+    }
 
 
     public function index(Produit $product): View
