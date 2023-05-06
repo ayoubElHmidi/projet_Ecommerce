@@ -46,7 +46,7 @@ class ProductController extends Controller
             'photo' => 'image|max:1024',
             'prixPro' => 'required|numeric',
             'qtePro' => 'required|numeric',
-            'idCat' =>'required|string|max:255',
+            'idCat' =>'required|numeric|max:255',
         ]);
 
         $imgpath = $request->file('photo')->storeAs('public', $request->file('photo')->getClientOriginalName());

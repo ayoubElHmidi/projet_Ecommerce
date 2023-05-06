@@ -4,6 +4,7 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\CategorieController;
 use App\Http\Controllers\ProductController;
 
 /*
@@ -56,3 +57,6 @@ Route::post('/admin', [AdminController::class, 'store'])->name('admin.store');
 Route::resource("products", ProductController::class);
 
 require __DIR__.'/auth.php';
+
+//------                               ayoub                      ------
+
