@@ -26,7 +26,8 @@ Route::get('/',[HomeController::class,'index'])->name('index');
 Route::get('/cart',[HomeController::class,'cart'])->name('cart');
 Route::get('/checkout',[HomeController::class,'checkout'])->name('checkout');
 Route::get('/contact',[HomeController::class,'contact'])->name('contact');
-Route::get('/detail',[HomeController::class,'detail'])->name('detail');
+Route::get('/detail/{pro}', [HomeController::class, 'detail'])->name('detail');
+
 Route::get('/shop',[ProductController::class,'shop'])->name('shop');
 
 
