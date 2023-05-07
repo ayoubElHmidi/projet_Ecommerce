@@ -1,5 +1,9 @@
 
+<<<<<<< HEAD
 @include('layouts.navbarhome')
+=======
+
+>>>>>>> 9a5f255aa3fd33f52ace90ec8aab38c82b5fa456
 <body>
     <!-- Topbar Start -->
     
@@ -7,7 +11,7 @@
 
 
     <!-- Navbar Start -->
-    
+    @include('layouts.navbarhome')
     <!-- Navbar End -->
 
 
