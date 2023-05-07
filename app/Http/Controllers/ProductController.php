@@ -73,6 +73,8 @@ class ProductController extends Controller
             'prixPro' => 'required|numeric',
             'qtePro' => 'required|numeric',
             'idCat' =>'required|numeric',
+            'color' =>'required|string',
+            'size' =>'required|string',
         ]);
         
         switch($request->idCat){
@@ -98,6 +100,8 @@ class ProductController extends Controller
             "prixPro" => $request->prixPro,
             'qtePro' => $request->qtePro,
             'idCat' => $request->idCat,
+            'color' =>$request->color,
+            'size' =>$request->size,
         ]);
         return redirect(route('admin'));
     }
@@ -134,6 +138,8 @@ class ProductController extends Controller
             'prixPro' => 'required|numeric',
             'qtePro' => 'required|numeric',
             'idCat' =>'required|numeric',
+            'color' =>'required|string',
+            'size' =>'required|string',
         ];
 
         if ($request->hasFile('photo')) {
@@ -162,8 +168,9 @@ class ProductController extends Controller
             "prixPro" => $request->prixPro,
             'qtePro' => $request->qtePro,
             'idCat' => $request->idCat,
+            'color' =>$request->color,
+            'size' =>$request->size,
         ];
-
         $product->update($productData);
 
         return redirect(route('admin'));
