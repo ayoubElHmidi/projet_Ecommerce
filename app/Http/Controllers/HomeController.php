@@ -24,12 +24,9 @@ class HomeController extends Controller
     public function contact(){
         return view('contact');
     }
-<<<<<<< HEAD
+
 
 public function detail($pro)
-=======
-    public function detail($pro): View
->>>>>>> 9a5f255aa3fd33f52ace90ec8aab38c82b5fa456
 {
     $produits = Produit::findOrFail($pro);
     $categories = Categorie::all();
