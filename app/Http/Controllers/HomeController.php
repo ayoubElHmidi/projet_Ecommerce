@@ -1,8 +1,10 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Illuminate\View\View;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Redirect;
+use Illuminate\Http\RedirectResponse;
 use App\Models\Personne;
 use App\Models\Categorie;
 use App\Models\Produit;
@@ -22,11 +24,13 @@ class HomeController extends Controller
     public function contact(){
         return view('contact');
     }
-    public function detail($pro)
+    public function detail($pro): View
 {
     $produits = Produit::find($pro);
     $categories = Categorie::all();
-    return view('detail', compact('categories', 'produits'));
+    if ($produits) {
+        return view('detail', ["categories"=>$categories,"produits"=>$produits]); 
+    } 
 }
     public function shop(){
         return view('shop');

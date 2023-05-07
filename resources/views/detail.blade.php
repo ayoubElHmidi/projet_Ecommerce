@@ -1,5 +1,5 @@
 
-@include('nav')
+
 <body>
     <!-- Topbar Start -->
     
@@ -7,7 +7,7 @@
 
 
     <!-- Navbar Start -->
-    
+    @include('layouts.navbarhome')
     <!-- Navbar End -->
 
 
