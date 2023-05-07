@@ -8,7 +8,6 @@
     <meta content="Free HTML Templates" name="keywords">
     <meta content="Free HTML Templates" name="description">
     <link rel="icon" href="{{ asset('public/storage') }}">
-
     <link rel="preconnect" href="{{ asset('https://fonts.gstatic.com') }}">
     <link rel="stylesheet" href="{{ asset("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css") }}">
     <link rel="stylesheet" href="{{ asset('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap') }}">

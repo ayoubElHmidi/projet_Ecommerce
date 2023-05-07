@@ -17,12 +17,13 @@ use App\Http\Controllers\ProductController;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
+Route::get('/',[ProductController::class,'afficherProduitsAleatoires'])->name('index');
 
 Route::get('/recherche',[ProductController::class,'recherchePro'])->name('recherchePro');
 
 
 
-Route::get('/',[HomeController::class,'index'])->name('index');
+
 Route::get('/cart',[HomeController::class,'cart'])->name('cart');
 Route::get('/checkout',[HomeController::class,'checkout'])->name('checkout');
 Route::get('/contact',[HomeController::class,'contact'])->name('contact');
@@ -63,4 +64,6 @@ Route::resource("products", ProductController::class);
 require __DIR__.'/auth.php';
 
 //------                               ayoub                      ------
-Route::get('/shop/{categorie}', [ProductController::class,'afficherProduitsParCategorie'])->name('produits.categorie');
+Route::get('/shop/{categorie}', [ProduitController::class,'afficherProduitsParCategorie'])->name('produits.categorie');
+
+

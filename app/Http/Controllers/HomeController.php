@@ -12,8 +12,7 @@ use App\Models\Produit;
 class HomeController extends Controller
 {
     public function index(){
-        $categories = Categorie::all();
-        return view('index',['categories' => $categories]);
+
     }
     public function cart(){
         return view('cart');
