@@ -38,6 +38,24 @@
                             <option value="{{$item->idCat}}">{{$item->nomCat}}</option>
                             @endforeach
                         </select> 
+<br>
+                        <label for="color">color :</label><br>
+                        <select name="color" id="color">
+                            <option value="Green">Green</option>
+                            <option value="Blue">Blue</option>
+                            <option value="Red">Red</option>
+                            <option value="White">White</option>
+                            <option value="Black">Black</option>
+                        </select> 
+<br>
+                        <label for="size">size :</label><br>
+                        <select name="size" id="size">
+                            <option value="XS">XS</option>
+                            <option value="S">S</option>
+                            <option value="M">M</option>
+                            <option value="L">L</option>
+                            <option value="XL">XL</option>
+                        </select> 
                     <x-primary-button class="mt-4">{{ __('Publier') }}</x-primary-button>
                     <a href="{{ route('admin') }}">Retour</a>
                 </form>

@@ -20,6 +20,8 @@ class Produit extends Model
         'prixPro',
         'qtePro',
         'idCat',
+        'color',
+        'size',
     ];
     public $timestamps = false;
     public function categorie()
