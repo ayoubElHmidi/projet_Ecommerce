@@ -22,12 +22,14 @@ class HomeController extends Controller
     public function contact(){
         return view('contact');
     }
-    public function detail($pro)
+
+public function detail($pro)
 {
-    $produits = Produit::find($pro);
+    $produits = Produit::findOrFail($pro);
     $categories = Categorie::all();
     return view('detail', compact('categories', 'produits'));
 }
+
     public function shop(){
         return view('shop');
     }

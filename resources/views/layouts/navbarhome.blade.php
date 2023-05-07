@@ -11,7 +11,7 @@
                     <div class="dropdown-menu position-absolute bg-secondary border-0 rounded-0 w-100 m-0">
                     </div>
                     @foreach ($categories as $item)
-                        <a href="" class="nav-item nav-link">{{$item->nomCat}}</a>
+                        <a  href="{{ route('produits.categorie', $item->idCat) }}" class="nav-item nav-link">{{$item->nomCat}}</a>
                     @endforeach
 
                 </div>

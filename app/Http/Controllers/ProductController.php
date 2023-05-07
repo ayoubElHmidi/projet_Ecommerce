@@ -20,7 +20,14 @@ class ProductController extends Controller
         return view('shop', ['categories' => $categories,'produits' => $produits]);
     }
 
-
+    public function afficherProduitsParCategorie($idCategorie)
+    {
+        $categorie = Categorie::findOrFail($idCategorie);
+        $produits = Produit::where('idCat', $idCategorie)->get();
+        $categories = Categorie::all();
+        return view('shop', compact('categories', 'produits', 'categorie'));
+    }
+    
 
     public function index(Produit $product): View
     {

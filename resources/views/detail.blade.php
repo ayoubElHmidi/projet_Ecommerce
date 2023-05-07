@@ -1,5 +1,5 @@
 
-@include('nav')
+@include('layouts.navbarhome')
 <body>
     <!-- Topbar Start -->
     
