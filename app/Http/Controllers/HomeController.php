@@ -19,10 +19,12 @@ class HomeController extends Controller
         return view('cart');
     }
     public function checkout(){
+        
         return view('checkout');
     }
     public function contact(){
-        return view('contact');
+        $categories = Categorie::all();
+        return view('contact',["categories"=>$categories]);
     }
 
 
