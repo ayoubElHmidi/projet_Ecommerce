@@ -1,6 +1,3 @@
-
-@include('nav')
-
 @php
 $cookie_name = 'panier';
 $panier = json_decode(request()->cookie($cookie_name), true) ?? [];
