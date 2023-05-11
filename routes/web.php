@@ -1,9 +1,6 @@
 <?php
-<<<<<<< HEAD
 
-=======
 use App\Models\Categorie;
->>>>>>> main
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
@@ -21,45 +18,34 @@ use App\Http\Controllers\ProductController;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
-<<<<<<< HEAD
-=======
+
 Route::get('/',[ProductController::class,'afficherProduitsAleatoires'])->name('index');
->>>>>>> main
+
 
 Route::get('/recherche',[ProductController::class,'recherchePro'])->name('recherchePro');
-
-
-
-<<<<<<< HEAD
 Route::get('/',[HomeController::class,'index'])->name('index');
-=======
-
->>>>>>> main
 Route::get('/cart',[HomeController::class,'cart'])->name('cart');
 Route::get('/checkout',[HomeController::class,'checkout'])->name('checkout');
 Route::get('/contact',[HomeController::class,'contact'])->name('contact');
 Route::get('/detail/{pro}', [homeController::class, 'detail'])->name('detail');
-<<<<<<< HEAD
 //route ajouter au panier
 
 Route::get('/addPanier/{pro}', [homeController::class, 'ajouterProduitAuPanier'])->name('cookie');
 //route supprimer au panier
 Route::post('/panier/{idPro}/supprimer', [HomeController::class, 'supprimerProduitDuPanier'])->name('panier.supprimer');
-=======
 
->>>>>>> main
 
 Route::get('/shop',[ProductController::class,'shop'])->name('shop');
 
 
 
 Route::get('/dashboard', function () {
-<<<<<<< HEAD
+
     return view('dashboard');
-=======
+
     $categories = Categorie::all();
     return view('dashboard', ["categories"=>$categories]);
->>>>>>> main
+
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
@@ -89,8 +75,7 @@ require __DIR__.'/auth.php';
 
 //------                               ayoub                      ------
 Route::get('/shop/{categorie}', [ProductController::class,'afficherProduitsParCategorie'])->name('produits.categorie');
-<<<<<<< HEAD
-=======
 
 
->>>>>>> main
+
+

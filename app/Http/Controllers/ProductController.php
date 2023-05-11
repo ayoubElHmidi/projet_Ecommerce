@@ -20,8 +20,6 @@ class ProductController extends Controller
         return view('shop', ['categories' => $categories,'produits' => $produits]);
     }
 
-<<<<<<< HEAD
-=======
     public function afficherProduitsAleatoires()
 {
     $produits = Produit::inRandomOrder()->take(8)->get();
@@ -31,7 +29,6 @@ class ProductController extends Controller
     
 }
 
->>>>>>> main
     public function afficherProduitsParCategorie($idCategorie)
     {
         $categorie = Categorie::findOrFail($idCategorie);
@@ -41,10 +38,7 @@ class ProductController extends Controller
     }
     
 
-    public function index(Produit $product): View
-    {
-        return view("fireshop.index");
-    }
+
 
     function recherchePro(Request $req){
             $produits=Produit::query()->where("nomPro","like","%".$req["recherchePro"]."%")->get();

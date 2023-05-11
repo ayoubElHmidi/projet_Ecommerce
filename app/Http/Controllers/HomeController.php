@@ -8,7 +8,6 @@ use Illuminate\Http\RedirectResponse;
 use App\Models\Personne;
 use App\Models\Categorie;
 use App\Models\Produit;
-<<<<<<< HEAD
 use App\Models\Panie;
 class HomeController extends Controller
 {
@@ -27,22 +26,8 @@ class HomeController extends Controller
     public function contact(){
         $categories = Categorie::all();
         return view('contact',["categories"=>$categories]);
-=======
-
-class HomeController extends Controller
-{
-    public function index(){
 
     }
-    public function cart(){
-        $categories = Categorie::all();
-        return view('cart', ["categories"=>$categories]);
-    }
-    public function contact(){
-        return view('contact');
->>>>>>> main
-    }
-
 
 public function detail($pro)
 {
@@ -53,7 +38,7 @@ public function detail($pro)
     } 
 }
 
-<<<<<<< HEAD
+
 
 public function ajouterProduitAuPanier($pro)
 {
@@ -96,9 +81,6 @@ public function supprimerProduitDuPanier($idPro)
   return redirect()->route('cart')->cookie($cookie);
 }
 
-
-=======
->>>>>>> main
     public function shop(){
         return view('shop');
     }
