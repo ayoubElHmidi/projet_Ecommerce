@@ -1,5 +1,5 @@
 <?php
-
+use App\Models\Categorie;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
@@ -35,7 +35,8 @@ Route::get('/shop',[ProductController::class,'shop'])->name('shop');
 
 
 Route::get('/dashboard', function () {
-    return view('dashboard');
+    $categories = Categorie::all();
+    return view('dashboard', ["categories"=>$categories]);
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
@@ -64,6 +65,6 @@ Route::resource("products", ProductController::class);
 require __DIR__.'/auth.php';
 
 //------                               ayoub                      ------
-Route::get('/shop/{categorie}', [ProduitController::class,'afficherProduitsParCategorie'])->name('produits.categorie');
+Route::get('/shop/{categorie}', [ProductController::class,'afficherProduitsParCategorie'])->name('produits.categorie');
 
 
