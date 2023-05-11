@@ -28,6 +28,7 @@ Route::get('/checkout',[HomeController::class,'checkout'])->name('checkout');
 Route::get('/contact',[HomeController::class,'contact'])->name('contact');
 Route::get('/detail/{pro}', [homeController::class, 'detail'])->name('detail');
 //route ajouter au panier
+
 Route::get('/addPanier/{pro}', [homeController::class, 'ajouterProduitAuPanier'])->name('cookie');
 //route supprimer au panier
 Route::post('/panier/{idPro}/supprimer', [HomeController::class, 'supprimerProduitDuPanier'])->name('panier.supprimer');
