@@ -8,6 +8,10 @@
     <meta content="Free HTML Templates" name="keywords">
     <meta content="Free HTML Templates" name="description">
     <link rel="icon" href="{{ asset('public/storage') }}">
+<<<<<<< HEAD
+
+=======
+>>>>>>> main
     <link rel="preconnect" href="{{ asset('https://fonts.gstatic.com') }}">
     <link rel="stylesheet" href="{{ asset("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css") }}">
     <link rel="stylesheet" href="{{ asset('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap') }}">
@@ -74,12 +78,20 @@
                     <i class="fas fa-heart text-primary"></i>
                     <span class="badge">0</span>
                 </a>
+<<<<<<< HEAD
+                
+=======
                 @auth
+>>>>>>> main
                 <a href="{{ route('cart') }}" class="btn border">
                     <i class="fas fa-shopping-cart text-primary"></i>
                     <span class="badge">0</span>
                 </a>    
+<<<<<<< HEAD
+                
+=======
                 @endauth
+>>>>>>> main
                 
             </div>
         </div>

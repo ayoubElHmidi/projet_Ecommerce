@@ -6,6 +6,7 @@
 
     <!-- Navbar Start -->
     @include('layouts.navbarhome')
+ 
     <!-- Navbar End -->
 
 

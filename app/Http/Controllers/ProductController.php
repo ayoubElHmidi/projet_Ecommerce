@@ -38,10 +38,7 @@ class ProductController extends Controller
     }
     
 
-    public function index(Produit $product): View
-    {
-        return view("fireshop.index");
-    }
+
 
     function recherchePro(Request $req){
             $produits=Produit::query()->where("nomPro","like","%".$req["recherchePro"]."%")->get();
