@@ -20,6 +20,18 @@ class ProductController extends Controller
         return view('shop', ['categories' => $categories,'produits' => $produits]);
     }
 
+<<<<<<< HEAD
+=======
+    public function afficherProduitsAleatoires()
+{
+    $produits = Produit::inRandomOrder()->take(8)->get();
+    $categories = Categorie::all();
+    return view('index', compact('produits','categories'));
+    
+    
+}
+
+>>>>>>> main
     public function afficherProduitsParCategorie($idCategorie)
     {
         $categorie = Categorie::findOrFail($idCategorie);

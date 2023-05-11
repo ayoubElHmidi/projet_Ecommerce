@@ -1,5 +1,10 @@
 
 @include('layouts.navbarhome')
+@section('categorie')
+@foreach ($categories as $item)
+    <a  href="{{ route('produits.categorie', $item->idCat) }}" class="nav-item nav-link">{{$item->nomCat}}</a>
+@endforeach
+@endsection
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">

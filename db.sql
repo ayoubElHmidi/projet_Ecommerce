@@ -37,7 +37,7 @@ create table categories (
     descriptionCat text ,
     photoCat varchar(100)
 );
->>>>>>> refs/remotes/origin/main
+
 CREATE table produits(
     idPro int primary key auto_increment, 
     nomPro varchar(100),
