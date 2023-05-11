@@ -12,8 +12,9 @@ use App\Models\Panie;
 class HomeController extends Controller
 {
     public function index(){
+        $produits = Produit::inRandomOrder()->take(8)->get();
         $categories = Categorie::all();
-        return view('index',['categories' => $categories]);
+        return view('index', compact('produits','categories'));
     }
     public function cart(){
         $categories = Categorie::all();

@@ -19,16 +19,6 @@ class ProductController extends Controller
         $produits = produit::all();
         return view('shop', ['categories' => $categories,'produits' => $produits]);
     }
-
-    public function afficherProduitsAleatoires()
-{
-    $produits = Produit::inRandomOrder()->take(8)->get();
-    $categories = Categorie::all();
-    return view('index', compact('produits','categories'));
-    
-    
-}
-
     public function afficherProduitsParCategorie($idCategorie)
     {
         $categorie = Categorie::findOrFail($idCategorie);

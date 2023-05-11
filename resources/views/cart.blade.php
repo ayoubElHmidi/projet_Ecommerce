@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 @include('nav')
 
 @php
@@ -8,8 +8,6 @@ $panier = json_decode(request()->cookie($cookie_name), true) ?? [];
 
 <body>
 
-
-=======
 @include('layouts.navbarhome')
 <body>
 
@@ -23,7 +21,7 @@ $panier = json_decode(request()->cookie($cookie_name), true) ?? [];
             </div>
         </div>
     </div>
->>>>>>> main
+
     <div class="container-fluid pt-5">
         <div class="row px-xl-5">
             <div class="col-lg-8 table-responsive mb-5">
@@ -38,18 +36,14 @@ $panier = json_decode(request()->cookie($cookie_name), true) ?? [];
                         </tr>
                     </thead>
                     <tbody class="align-middle">
-<<<<<<< HEAD
-                        <!--affichage -->
                         @if(count($panier) > 0)
                         @foreach($panier as $produit)
                         <tr>
                             <td class="align-middle"><img src="{{ $produit['photo'] }}" alt="" style="width: 50px;"> {{ $produit['nomPro'] }}</td>
                             <td class="align-middle">${{ $produit['prixpro'] }}</td>
-=======
                         <tr>
                             <td class="align-middle"><img src="img/product-1.jpg" alt="" style="width: 50px;"> Colorful Stylish Shirt</td>
                             <td class="align-middle">$150</td>
->>>>>>> main
                             <td class="align-middle">
                                 <div class="input-group quantity mx-auto" style="width: 100px;">
                                     <div class="input-group-btn">
@@ -57,11 +51,10 @@ $panier = json_decode(request()->cookie($cookie_name), true) ?? [];
                                         <i class="fa fa-minus"></i>
                                         </button>
                                     </div>
-<<<<<<< HEAD
                                     <input type="text" class="form-control form-control-sm bg-secondary text-center" value="{{ $produit['qteV'] }}">
-=======
+
                                     <input type="text" class="form-control form-control-sm bg-secondary text-center" value="1">
->>>>>>> main
+ 
                                     <div class="input-group-btn">
                                         <button class="btn btn-sm btn-primary btn-plus">
                                             <i class="fa fa-plus"></i>
@@ -70,7 +63,6 @@ $panier = json_decode(request()->cookie($cookie_name), true) ?? [];
                                 </div>
                             </td>
                             <td class="align-middle">$150</td>
-<<<<<<< HEAD
                             <td class="align-middle">
                             <!--supprimer produit men cookie-->
                                 <form action="{{ route('panier.supprimer', ['idPro' => $produit['idPro']]) }}" method="POST">
@@ -83,70 +75,6 @@ $panier = json_decode(request()->cookie($cookie_name), true) ?? [];
                         @else
                             <p>Votre panier est vide</p>
                         @endif
-=======
-                            <td class="align-middle"><button class="btn btn-sm btn-primary"><i class="fa fa-times"></i></button></td>
-                        </tr>
-                        <tr>
-                            <td class="align-middle"><img src="img/product-2.jpg" alt="" style="width: 50px;"> Colorful Stylish Shirt</td>
-                            <td class="align-middle">$150</td>
-                            <td class="align-middle">
-                                <div class="input-group quantity mx-auto" style="width: 100px;">
-                                    <div class="input-group-btn">
-                                        <button class="btn btn-sm btn-primary btn-minus" >
-                                        <i class="fa fa-minus"></i>
-                                        </button>
-                                    </div>
-                                    <input type="text" class="form-control form-control-sm bg-secondary text-center" value="1">
-                                    <div class="input-group-btn">
-                                        <button class="btn btn-sm btn-primary btn-plus">
-                                            <i class="fa fa-plus"></i>
-                                        </button>
-                                    </div>
-                                </div>
-                            </td>
-                            <td class="align-middle">$150</td>
-                            <td class="align-middle"><button class="btn btn-sm btn-primary"><i class="fa fa-times"></i></button></td>
-                        </tr>
-                        <tr>
-                            <td class="align-middle"><img src="img/product-3.jpg" alt="" style="width: 50px;"> Colorful Stylish Shirt</td>
-                            <td class="align-middle">$150</td>
-                            <td class="align-middle">
-                                <div class="input-group quantity mx-auto" style="width: 100px;">
-                                    <div class="input-group-btn">
-                                        <button class="btn btn-sm btn-primary btn-minus" >
-                                        <i class="fa fa-minus"></i>
-                                        </button>
-                                    </div>
-                                    <input type="text" class="form-control form-control-sm bg-secondary text-center" value="1">
-                                    <div class="input-group-btn">
-                                        <button class="btn btn-sm btn-primary btn-plus">
-                                            <i class="fa fa-plus"></i>
-                                        </button>
-                                    </div>
-                                </div>
-                            </td>
-                            <td class="align-middle">$150</td>
-                            <td class="align-middle"><button class="btn btn-sm btn-primary"><i class="fa fa-times"></i></button></td>
-                        </tr>
-                        <tr>
-                            <td class="align-middle"><img src="img/product-4.jpg" alt="" style="width: 50px;"> Colorful Stylish Shirt</td>
-                            <td class="align-middle">$150</td>
-                            <td class="align-middle">
-                                <div class="input-group quantity mx-auto" style="width: 100px;">
-                                    <div class="input-group-btn">
-                                        <button class="btn btn-sm btn-primary btn-minus" >
-                                        <i class="fa fa-minus"></i>
-                                        </button>
-                                    </div>
-                                    <input type="text" class="form-control form-control-sm bg-secondary text-center" value="1">
-                                    <div class="input-group-btn">
-                                        <button class="btn btn-sm btn-primary btn-plus">
-                                            <i class="fa fa-plus"></i>
-                                        </button>
-                                    </div>
-                                </div>
-                            </td>
-                            <td class="align-middle">$150</td>
                             <td class="align-middle"><button class="btn btn-sm btn-primary"><i class="fa fa-times"></i></button></td>
                         </tr>
                         <tr>
@@ -170,7 +98,6 @@ $panier = json_decode(request()->cookie($cookie_name), true) ?? [];
                             <td class="align-middle">$150</td>
                             <td class="align-middle"><button class="btn btn-sm btn-primary"><i class="fa fa-times"></i></button></td>
                         </tr>
->>>>>>> main
                     </tbody>
                 </table>
             </div>
