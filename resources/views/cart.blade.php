@@ -1,5 +1,4 @@
 @include('layouts.navbarhome')
-
 @php
 $cookie_name = 'panier';
 $panier = json_decode(request()->cookie($cookie_name), true) ?? [];
@@ -43,7 +42,7 @@ $panier = json_decode(request()->cookie($cookie_name), true) ?? [];
                                     </div>
                                 </div>
                             </td>
-                            <td class="align-middle">$150</td>
+                            <td class="align-middle">${{$produit['qteV']*$produit['prixpro']}}</td>
                             <td class="align-middle">
                             <!--supprimer produit men cookie-->
                                 <form action="{{ route('panier.supprimer', ['idPro' => $produit['idPro']]) }}" method="POST">

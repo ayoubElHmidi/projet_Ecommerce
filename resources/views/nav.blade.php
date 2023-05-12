@@ -74,14 +74,13 @@
                     <i class="fas fa-heart text-primary"></i>
                     <span class="badge">0</span>
                 </a>
-                @auth
+                
                 <a href="{{ route('cart') }}" class="btn border">
                     <i class="fas fa-shopping-cart text-primary"></i>
                     <span class="badge">0</span>
                 </a>    
 
-                @endauth
-
+                
                 
             </div>
         </div>

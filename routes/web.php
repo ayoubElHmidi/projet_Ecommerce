@@ -33,7 +33,9 @@ Route::get('/detail/{pro}', [homeController::class, 'detail'])->name('detail');
 Route::get('/addPanier/{pro}', [homeController::class, 'ajouterProduitAuPanier'])->name('cookie');
 //route supprimer au panier
 Route::post('/panier/{idPro}/supprimer', [HomeController::class, 'supprimerProduitDuPanier'])->name('panier.supprimer');
-
+Route::get('/addPanier/{pro}', [homeController::class, 'ajouterProduitAuPanier'])->name('cookie');
+//route supprimer au panier
+Route::post('/panier/{idPro}/supprimer', [HomeController::class, 'supprimerProduitDuPanier'])->name('panier.supprimer');
 
 Route::get('/shop',[ProductController::class,'shop'])->name('shop');
 

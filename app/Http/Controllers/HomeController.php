@@ -14,7 +14,8 @@ class HomeController extends Controller
     public function index(){
         $produits = Produit::inRandomOrder()->take(8)->get();
         $categories = Categorie::all();
-        return view('index', compact('produits','categories'));
+        $produits = Produit::all();
+        return view('index',['categories' => $categories,"produits"=>$produits]);
     }
     public function cart(){
         $categories = Categorie::all();
@@ -30,6 +31,7 @@ class HomeController extends Controller
 
     }
 
+
 public function detail($pro)
 {
     $produits = Produit::findOrFail($pro);
@@ -38,9 +40,6 @@ public function detail($pro)
         return view('detail', ["categories"=>$categories,"produits"=>$produits]); 
     } 
 }
-
-
-
 public function ajouterProduitAuPanier($pro)
 {
     $produit = Produit::find($pro);
@@ -81,7 +80,6 @@ public function supprimerProduitDuPanier($idPro)
 
   return redirect()->route('cart')->cookie($cookie);
 }
-
     public function shop(){
         return view('shop');
     }
