@@ -62,7 +62,7 @@ Route::get('/admin', [AdminController::class,'admin_index'])
     
 Route::get('/admin-panel', 
     function(){
-        return view("fireshop.admin");
+        return view("fireshop.admin.index");
     }
 )
 //->middleware(['auth', 'verified'])
