@@ -52,46 +52,53 @@ class ProductController extends Controller
      * Store a newly created resource in storage.
      */
     public function store(Request $request): RedirectResponse
-    {
-        $this->validate($request, [
-            'nomPro' => 'required|string|max:255',
-            'descriptionPro' => 'required|string|max:10000',
-            'photo' => 'image|max:1024',
-            'prixPro' => 'required|numeric',
-            'qtePro' => 'required|numeric',
-            'idCat' =>'required|numeric',
-            'color' =>'required|string',
-            'size' =>'required|string',
-        ]);
-        
-        switch($request->idCat){
-            case 1 : $imgpath = $request->file('photo')->storeAs('public/femmes', $request->file('photo')->getClientOriginalName());
-            break;
-            case 2 : $imgpath = $request->file('photo')->storeAs('public/hommes', $request->file('photo')->getClientOriginalName());
-            break;
-            case 3 : $imgpath = $request->file('photo')->storeAs('public/enfants', $request->file('photo')->getClientOriginalName());
-            break;
-            case 4 : $imgpath = $request->file('photo')->storeAs('public/vetementSport', $request->file('photo')->getClientOriginalName());
-            break;
-            case 5 : $imgpath = $request->file('photo')->storeAs('public/accessoires', $request->file('photo')->getClientOriginalName());
-            break;
-            case 6 : $imgpath = $request->file('photo')->storeAs('public/chaussures', $request->file('photo')->getClientOriginalName());
-        }
-        $imgpath = str_replace("public", "storage", $imgpath);
-        
+{
+    $this->validate($request, [
+        'nomPro' => 'required|string|max:255',
+        'descriptionPro' => 'required|string|max:10000',
+        'photo' => 'image|max:1024',
+        'prixPro' => 'required|numeric',
+        'qtePro' => 'required|numeric',
+        'idCat' => 'required|numeric',
+        'color' => 'required|string',
+        'size' => 'required|string',
+    ]);
 
-        Produit::create([
-            "nomPro" => $request->nomPro,
-            "descriptionPro" => $request->descriptionPro,
-            "photo" => $imgpath,
-            "prixPro" => $request->prixPro,
-            'qtePro' => $request->qtePro,
-            'idCat' => $request->idCat,
-            'color' =>$request->color,
-            'size' =>$request->size,
-        ]);
-        return redirect(route('admin'));
+    switch ($request->idCat) {
+        case 1:
+            $imgpath = $request->file('photo')->storeAs('public/femmes', $request->file('photo')->getClientOriginalName());
+            break;
+        case 2:
+            $imgpath = $request->file('photo')->storeAs('public/hommes', $request->file('photo')->getClientOriginalName());
+            break;
+        case 3:
+            $imgpath = $request->file('photo')->storeAs('public/enfants', $request->file('photo')->getClientOriginalName());
+            break;
+        case 4:
+            $imgpath = $request->file('photo')->storeAs('public/vetementSport', $request->file('photo')->getClientOriginalName());
+            break;
+        case 5:
+            $imgpath = $request->file('photo')->storeAs('public/accessoires', $request->file('photo')->getClientOriginalName());
+            break;
+        case 6:
+            $imgpath = $request->file('photo')->storeAs('public/chaussures', $request->file('photo')->getClientOriginalName());
+            break;
     }
+    $imgpath = str_replace("public", "storage", $imgpath);
+
+    Produit::create([
+        "nomPro" => $request->nomPro,
+        "descriptionPro" => $request->descriptionPro,
+        "photo" => $imgpath,
+        "prixPro" => $request->prixPro,
+        'qtePro' => $request->qtePro,
+        'idCat' => $request->idCat,
+        'color' => $request->color,
+        'size' => $request->size,
+    ]);
+
+    return redirect()->route('admin');
+}
 
     /**
      * Display the specified resource.
@@ -130,7 +137,7 @@ class ProductController extends Controller
         ];
 
         if ($request->hasFile('photo')) {
-            $rules['photo'] = 'image|max:1024';
+            $rules['photo'] = 'photo|max:1024';
         }
 
         $this->validate($request, $rules);

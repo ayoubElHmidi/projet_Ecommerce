@@ -44,7 +44,6 @@ Route::get('/shop',[ProductController::class,'shop'])->name('shop');
 Route::get('/dashboard', function () {
 
     return view('dashboard');
-
     $categories = Categorie::all();
     return view('dashboard', ["categories"=>$categories]);
 
@@ -67,11 +66,20 @@ Route::get('/admin-panel',
 )
 //->middleware(['auth', 'verified'])
 ->name('admine');
+//crud produit
+Route::get('/ajouter-Produit',[AdminController::class,'ajouteProd'])->name('ajouteProd');
+Route::post('/produit', [ProductController::class, 'store'])->name('products.store');
+Route::get('/produits',[AdminController::class,'affichagePro'])->name('affichagePro');
+Route::get('/produit/edit/{idPro}',[AdminController::class,'edit'])->name('edit.store');
+Route::get('/produit/update/{product}',[ProductController::class,'update'])->name('updateProduct');
+Route::get('/produit/delete/{product}', [ProductController::class, 'destroy'])->name('destroy');
 
+
+//ajoute administratour
 Route::get('/admin/create', [AdminController::class,'create'])->name('admin.create');
 Route::post('/admin', [AdminController::class, 'store'])->name('admin.store');
 
-Route::resource("products", ProductController::class);
+
 
 require __DIR__.'/auth.php';
 
