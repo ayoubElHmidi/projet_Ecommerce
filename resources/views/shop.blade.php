@@ -173,8 +173,13 @@
                                 </div>
                             </div>
                             <div class="card-footer d-flex justify-content-between bg-light border">
-                                <a href="/detail/{{$prod->idPro}}" class="btn btn-sm text-dark p-0"><i class="fas fa-eye text-primary mr-1"></i>View Detail</a>
-                                <a href="/addPanier/{{$prod->idPro}}" class="btn btn-sm text-dark p-0"><i class="fas fa-shopping-cart text-primary mr-1"></i>Add To Cart</a>
+                                @if (isset($user->is_blocked==0))
+                                    <a href="/detail/{{$prod->idPro}}" class="btn btn-sm text-dark p-0"><i class="fas fa-eye text-primary mr-1"></i>View Detail</a>                                
+                                    <a href="/addPanier/{{$prod->idPro}}" class="btn btn-sm text-dark p-0"><i class="fas fa-shopping-cart text-primary mr-1"></i>Add To Cart</a>    
+                                @else
+                                    <button class="btn btn-danger">your bloqued</button>
+                                @endif
+                                
                             </div>
                         </div>
                     </div>

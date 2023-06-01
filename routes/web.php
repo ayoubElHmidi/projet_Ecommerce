@@ -59,27 +59,26 @@ Route::get('/admin', [AdminController::class,'admin_index'])
     //->middleware(['auth', 'verified'])
     ->name('admin');
     
-Route::get('/admin-panel', 
-    function(){
-        return view("fireshop.admin.index");
-    }
+Route::get('/admin-panel', [AdminController::class,"bladeAdmine"]
 )
 //->middleware(['auth', 'verified'])
 ->name('admine');
-//crud produit
-Route::get('/ajouter-Produit',[AdminController::class,'ajouteProd'])->name('ajouteProd');
-Route::post('/produit', [ProductController::class, 'store'])->name('products.store');
-Route::get('/produits',[AdminController::class,'affichagePro'])->name('affichagePro');
-Route::get('/produit/edit/{idPro}',[AdminController::class,'edit'])->name('edit.store');
-Route::get('/produit/update/{product}',[ProductController::class,'update'])->name('updateProduct');
-Route::get('/produit/delete/{product}', [ProductController::class, 'destroy'])->name('destroy');
-
-
+//view crud produit
+Route::get('/produits',[AdminController::class,'affichagePro'])->name('blade.affichagePro');
+Route::get('/produit/add',[AdminController::class,'ajouteProd'])->name('blade.ajouteProd');
+Route::get('/produit/edit/{idPro}',[AdminController::class,'edit'])->name('blade.edit');
+//methode crud produit
+Route::post('/produit', [ProductController::class, 'store'])->name('ajouterpro');
+Route::get('/produit/update/{product}',[ProductController::class,'update'])->name('updatePro');
+Route::get('/produit/delete/{product}', [ProductController::class, 'destroy'])->name('deletePro');
 //ajoute administratour
-Route::get('/admin/create', [AdminController::class,'create'])->name('admin.create');
+Route::get('/admin/create', [AdminController::class,'create'])->name('blade.createPro');
 Route::post('/admin', [AdminController::class, 'store'])->name('admin.store');
-
-
+//user
+Route::get('/users',[AdminController::class,'affichageUser'])->name('blade.affichageUser');
+Route::get('/user/delete/{user}', [AdminController::class, 'deleteUser'])->name('deleteUser');
+Route::post('/user/block/{id}', [AdminController::class, 'blockUser'])->name('blockUser');
+Route::post('/user/unlock/{id}', [AdminController::class, 'unlockUser'])->name('unlockUser');
 
 require __DIR__.'/auth.php';
 

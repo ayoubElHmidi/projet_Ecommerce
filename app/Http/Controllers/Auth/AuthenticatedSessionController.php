@@ -26,6 +26,11 @@ class AuthenticatedSessionController extends Controller
     public function store(LoginRequest $request): RedirectResponse
     {
         $request->authenticate();
+        $user = $request->user();
+   
+        if ($user->is_blocked==1){
+            return redirect()->route('login')->withErrors(['blocked' => 'Votre compte a été bloqué. Veuillez contacter l\'administrateur.']);
+        }
 
         $request->session()->regenerate();
 

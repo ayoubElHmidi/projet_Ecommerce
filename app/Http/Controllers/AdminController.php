@@ -2,6 +2,7 @@
 namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\View\View;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Http\RedirectResponse;
@@ -12,11 +13,17 @@ class AdminController extends Controller
     public function admin_index(User $user): RedirectResponse
     {
         if (!Gate::allows('access-admin', $user)) {
-            return redirect(route('dashboard'));
+            return redirect(route('index'));
         }
         return redirect(route('admine'));
     }
-
+    public function bladeAdmine(){
+        $id=Auth::id();
+        $user=User::find($id);
+        $countUser=$user->count();
+        
+        return view("fireshop.admin.index",compact("countUser"));
+    }
     public function create():view
     {
         $data=Categorie::all();
@@ -54,6 +61,26 @@ class AdminController extends Controller
         $product=Produit::query()->find($idPro);
         
         $data=Categorie::all();
-        return view("fireshop.admin.ajouteProd",compact("product","data"));
+        return view("fireshop.admin.editPro",compact("product","data"));
+    }
+    public function affichageUser(){
+        $users=User::All();
+        return view('fireshop.admin.users',compact('users'));
+    }
+    public function deleteUser(User $user){
+        $user->delete();
+        return redirect(route('admin'));
+    }
+    public function blockUser($id){
+        $user = User::find($id);
+        $user->is_blocked = true;
+        $user->save();
+        return redirect()->back();
+    }
+    public function unlockUser($id){
+        $user = User::find($id);
+        $user->is_blocked = false;
+        $user->save();
+        return redirect()->back();
     }
 }

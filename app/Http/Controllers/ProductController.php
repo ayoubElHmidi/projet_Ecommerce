@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+use Illuminate\Support\Facades\Auth;
 
 use App\Models\Produit;
 use App\Models\Categorie;
@@ -15,9 +16,11 @@ class ProductController extends Controller
 {
     public function shop()
     {
+        $id=Auth::id();
+        $user=User::find($id);
         $categories = Categorie::all();
         $produits = produit::all();
-        return view('shop', ['categories' => $categories,'produits' => $produits]);
+        return view('shop', ['categories' => $categories,'produits' => $produits,'user'=>$user]);
     }
     public function afficherProduitsParCategorie($idCategorie)
     {
@@ -128,12 +131,11 @@ class ProductController extends Controller
         $rules = [
             'nomPro' => 'required|string|max:255',
             'descriptionPro' => 'required|string|max:10000',
-            'photo' => 'image|max:1024',
             'prixPro' => 'required|numeric',
             'qtePro' => 'required|numeric',
-            'idCat' =>'required|numeric',
-            'color' =>'required|string',
-            'size' =>'required|string',
+            'idCat' => 'required|numeric',
+            'color' => 'required|string',
+            'size' => 'required|string',
         ];
 
         if ($request->hasFile('photo')) {
@@ -162,8 +164,8 @@ class ProductController extends Controller
             "prixPro" => $request->prixPro,
             'qtePro' => $request->qtePro,
             'idCat' => $request->idCat,
-            'color' =>$request->color,
-            'size' =>$request->size,
+            'color' => $request->color,
+            'size' => $request->size,
         ];
         $product->update($productData);
 

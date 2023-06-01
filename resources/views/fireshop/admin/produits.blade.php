@@ -33,7 +33,7 @@
                                                 <td>{{$pro->qtePro}}</td>
                                                 <td>{{$pro->color}}</td>
                                                 <td>{{$pro->size}}</td>
-                                                <td><a href="/produit/edit/{{$pro->idPro}}">Edit</a> <a href="{{ route("destroy", ['product' => $pro->idPro]) }}">delete</a>                                                </td>
+                                                <td><a href="/produit/edit/{{$pro->idPro}}">Edit</a> <a href="{{ route("deletePro", ['product' => $pro->idPro]) }}">delete</a>                                                </td>
                                                 
                                             </tr>
                                         @endforeach
@@ -58,11 +58,7 @@
 <script src="https://cdn.jsdelivr.net/npm/jquery-match-height@0.7.2/dist/jquery.matchHeight.min.js"></script>
 <script src="assets/js/main.js"></script>
 
-<script src="https://cdn.jsdelivr.net/npm/jquery@2.2.4/dist/jquery.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.4/dist/umd/popper.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/js/bootstrap.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/jquery-match-height@0.7.2/dist/jquery.matchHeight.min.js"></script>
-<script src="assets/js/main.js"></script>
+
 
 <script src="assets/js/lib/data-table/datatables.min.js"></script>
 <script src="assets/js/lib/data-table/dataTables.bootstrap.min.js"></script>
