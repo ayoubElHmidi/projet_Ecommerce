@@ -1,55 +1,44 @@
 <?php
 
-use App\Models\Categorie;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\AdminController;
-use App\Http\Controllers\CategorieController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\PanierController;
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider and all of them will
-| be assigned to the "web" middleware group. Make something great!
-|
-*/
+
+// Ajouter un produit dans le panier
+Route::post('/panier/ajouter', [PanierController::class,'ajouterProduitDansPanier'])->name('panier.ajouter');
+
+// Supprimer un produit du panier (pour utilisateur connecté)
+Route::post('/panier/supprimer-produit', [PanierController::class, 'supprimerProduitDuPanier'])->name('panier.supprimerProduit');
+
+// Mettre à jour la quantité d'un produit dans le panier
+Route::post('/panier/mettre-a-jour', [PanierController::class,'mettreAJourQuantiteProduit'])->name('panier.mettreAJour');
+
+// Calculer le prix TTC d'un produit
+Route::get('/produit/calculer-prix/{idProduit}/{quantite}', [PanierController::class,'calculerPrixTTCProduit'])->name('produit.calculerPrixTTC');
+
+// Calculer le prix total du panier
+Route::get('/panier/calculer-prix-total', [PanierController::class,'calculerPrixTotalPanier'])->name('panier.calculerPrixTotal');
+// afficher panier 
+Route::get('/panier', [PanierController::class,'afficherPanier'])->name('panier');
+
+
+
+
+
+
 
 Route::get('/',[ProductController::class,'afficherProduitsAleatoires'])->name('index');
-
-
 Route::get('/recherche',[ProductController::class,'recherchePro'])->name('recherchePro');
 Route::get('/',[HomeController::class,'index'])->name('index');
-Route::get('/cart',[HomeController::class,'cart'])->name('cart');
 Route::get('/checkout',[HomeController::class,'checkout'])->name('checkout');
 Route::get('/contact',[HomeController::class,'contact'])->name('contact');
 Route::get('/detail/{pro}', [homeController::class, 'detail'])->name('detail');
-//route ajouter au panier
-
-Route::get('/addPanier/{pro}', [homeController::class, 'ajouterProduitAuPanier'])->name('cookie');
-//route supprimer au panier
-Route::post('/panier/{idPro}/supprimer', [HomeController::class, 'supprimerProduitDuPanier'])->name('panier.supprimer');
-Route::get('/addPanier/{pro}', [homeController::class, 'ajouterProduitAuPanier'])->name('cookie');
-//route supprimer au panier
-Route::post('/panier/{idPro}/supprimer', [HomeController::class, 'supprimerProduitDuPanier'])->name('panier.supprimer');
-
 Route::get('/shop',[ProductController::class,'shop'])->name('shop');
-
-
-
-Route::get('/dashboard', function () {
-
-    return view('dashboard');
-
-    $categories = Categorie::all();
-    return view('dashboard', ["categories"=>$categories]);
-
-})->middleware(['auth', 'verified'])->name('dashboard');
-
+Route::get('/dashboard', [HomeController::class,'dashbord'])->middleware(['auth', 'verified'])->name('dashboard');
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');

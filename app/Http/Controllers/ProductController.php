@@ -4,10 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Produit;
 use App\Models\Categorie;
-use App\Models\User;
 use Illuminate\View\View;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Gate;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Storage;
 
@@ -27,9 +25,6 @@ class ProductController extends Controller
         return view('shop', compact('categories', 'produits', 'categorie'));
     }
     
-
-
-
     function recherchePro(Request $req){
             $produits=Produit::query()->where("nomPro","like","%".$req["recherchePro"]."%")->get();
             $categories = Categorie::all();
@@ -145,8 +140,6 @@ class ProductController extends Controller
         } else {
             $imgpath = $product->photo;
         }
-
-        // dd($imgpath);
 
         $productData = [
             "nomPro" => $request->nomPro,

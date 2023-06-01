@@ -40,7 +40,7 @@
                         <i class="fab fa-linkedin-in"></i>
                     </a>
                     <a class="text-dark px-2" href="">
-                        <i class="fab fa-instagram"></i>
+                        <i class=0"fab fa-instagram"></i>
                     </a>
                     <a class="text-dark pl-2" href="">
                         <i class="fab fa-youtube"></i>
@@ -75,10 +75,11 @@
                     <span class="badge">0</span>
                 </a>
                 
-                <a href="{{ route('cart') }}" class="btn border">
+                <a href="{{(Auth::check())? route('panier') : route('login') }}" class="btn border">
                     <i class="fas fa-shopping-cart text-primary"></i>
                     <span class="badge">0</span>
-                </a>    
+                </a>
+                   
 
                 
                 

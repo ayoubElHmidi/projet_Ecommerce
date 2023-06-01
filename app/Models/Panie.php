@@ -31,9 +31,11 @@ class Panie extends Model
     {
         return $this->belongsTo(Produit::class, 'idPro');
     }
+    
     public function commandes()
 {
     return $this->hasMany(Commande::class, 'idPanie');
 }
+
 
 }

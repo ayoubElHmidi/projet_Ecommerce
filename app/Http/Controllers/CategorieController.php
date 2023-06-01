@@ -7,5 +7,5 @@ use App\Models\Categorie;
 
 class CategorieController extends Controller
 {
- //
+ 
 }
