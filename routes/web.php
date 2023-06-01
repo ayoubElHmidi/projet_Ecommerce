@@ -29,8 +29,6 @@ Route::get('/panier', [PanierController::class,'afficherPanier'])->name('panier'
 
 
 
-
-
 Route::get('/',[ProductController::class,'afficherProduitsAleatoires'])->name('index');
 Route::get('/recherche',[ProductController::class,'recherchePro'])->name('recherchePro');
 Route::get('/',[HomeController::class,'index'])->name('index');

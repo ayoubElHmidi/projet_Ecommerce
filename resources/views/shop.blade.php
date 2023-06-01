@@ -172,6 +172,8 @@
                                 </div>
                             </div>
                             <div class="card-footer d-flex justify-content-between bg-light border">
+                                @isset($user)
+                                @if ($user->is_blocked==0)
                                 <a href="/detail/{{$prod->idPro}}" class="btn btn-sm text-dark p-0"><i class="fas fa-eye text-primary mr-1"></i>View Detail</a>
                                 <form action="{{ route('panier.ajouter') }}" method="post">
                                     @csrf
@@ -179,6 +181,10 @@
                                     
                                     <button type="submit">Ajouter au panier</button>
                                 </form>
+                                @else
+                                <button class="btn btn-danger">your bloqued</button>
+                            @endif
+                            @endisset
                             </div>
                         </div>
                     </div>
