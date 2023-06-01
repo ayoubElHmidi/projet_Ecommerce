@@ -39,6 +39,15 @@ Route::get('/contact',[HomeController::class,'contact'])->name('contact');
 Route::get('/detail/{pro}', [homeController::class, 'detail'])->name('detail');
 Route::get('/shop',[ProductController::class,'shop'])->name('shop');
 Route::get('/dashboard', [HomeController::class,'dashbord'])->middleware(['auth', 'verified'])->name('dashboard');
+
+
+
+
+Route::get('/dashboard', function () {
+
+    return view('dashboard');
+ 
+})->middleware(['auth', 'verified'])->name('dashboard');
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
@@ -49,21 +58,27 @@ Route::get('/admin', [AdminController::class,'admin_index'])
     //->middleware(['auth', 'verified'])
     ->name('admin');
     
-Route::get('/admin-panel', 
-    function(){
-        return view("fireshop.admin");
-    }
+Route::get('/admin-panel', [AdminController::class,"bladeAdmine"]
 )
 //->middleware(['auth', 'verified'])
 ->name('admine');
-
-Route::get('/admin/create', [AdminController::class,'create'])->name('admin.create');
+//view crud produit
+Route::get('/produits',[AdminController::class,'affichagePro'])->name('blade.affichagePro');
+Route::get('/produit/add',[AdminController::class,'ajouteProd'])->name('blade.ajouteProd');
+Route::get('/produit/edit/{idPro}',[AdminController::class,'edit'])->name('blade.edit');
+//methode crud produit
+Route::post('/produit', [ProductController::class, 'store'])->name('ajouterpro');
+Route::get('/produit/update/{product}',[ProductController::class,'update'])->name('updatePro');
+Route::get('/produit/delete/{product}', [ProductController::class, 'destroy'])->name('deletePro');
+//ajoute administratour
+Route::get('/admin/create', [AdminController::class,'create'])->name('blade.createPro');
 Route::post('/admin', [AdminController::class, 'store'])->name('admin.store');
-
-Route::resource("products", ProductController::class);
-
+//user
+Route::get('/users',[AdminController::class,'affichageUser'])->name('blade.affichageUser');
+Route::get('/user/delete/{user}', [AdminController::class, 'deleteUser'])->name('deleteUser');
+Route::post('/user/block/{id}', [AdminController::class, 'blockUser'])->name('blockUser');
+Route::post('/user/unlock/{id}', [AdminController::class, 'unlockUser'])->name('unlockUser');
 require __DIR__.'/auth.php';
-
 //------                               ayoub                      ------
 Route::get('/shop/{categorie}', [ProductController::class,'afficherProduitsParCategorie'])->name('produits.categorie');
 

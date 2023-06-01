@@ -1,7 +1,9 @@
 <x-guest-layout>
     <!-- Session Status -->
     <x-auth-session-status class="mb-4" :status="session('status')" />
-
+    @isset($blocked)
+        <h2>{{$blocked}}</h2>
+    @endisset
     <form method="POST" action="{{ route('login') }}">
         @csrf
 
