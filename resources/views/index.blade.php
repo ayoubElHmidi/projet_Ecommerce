@@ -97,16 +97,22 @@
                             @csrf
                             <input type="hidden" name="id_produit" value="{{ $prod->idPro }}">
                             
-                            <button type="submit">Ajouter au panier</button>
+                            <button type="submit">Add To Cart</button>
+                        </form>
                         @else
                             <button class="btn btn-danger">your bloqued</button>
                         @endif
                         @endisset
                         @empty($user)
                             <a href="/detail/{{$prod->idPro}}" class="btn btn-sm text-dark p-0"><i class="fas fa-eye text-primary mr-1"></i>View Detail</a>
-                            <a href="/addPanier/{{$prod->idPro}}" class="btn btn-sm text-dark p-0"><i class="fas fa-shopping-cart text-primary mr-1"></i>Add To Cart</a>
+                            <form action="{{ route('panier.ajouter') }}" method="post">
+                                @csrf
+                                <input type="hidden" name="id_produit" value="{{ $prod->idPro }}">
+                                
+                                <button type="submit">Add To Cartr</button>
+                            </form>
                         @endempty
-            </form>
+            
                             
                         
                         
@@ -165,14 +171,24 @@
                     @isset($user)
                     @if ($user->is_blocked==0)
                         <a href="/detail/{{$prod->idPro}}" class="btn btn-sm text-dark p-0"><i class="fas fa-eye text-primary mr-1"></i>View Detail</a>
-                        <a href="/addPanier/{{$prod->idPro}}" class="btn btn-sm text-dark p-0"><i class="fas fa-shopping-cart text-primary mr-1"></i>Add To Cart</a>
+                        <form action="{{ route('panier.ajouter') }}" method="post">
+                            @csrf
+                            <input type="hidden" name="id_produit" value="{{ $prod->idPro }}">
+                            
+                            <button type="submit">Add To Cart</button>
+                        </form>
                     @else
                         <button class="btn btn-danger">your bloqued</button>
                     @endif
                     @endisset
                     @empty($user)
                         <a href="/detail/{{$prod->idPro}}" class="btn btn-sm text-dark p-0"><i class="fas fa-eye text-primary mr-1"></i>View Detail</a>
-                        <a href="/addPanier/{{$prod->idPro}}" class="btn btn-sm text-dark p-0"><i class="fas fa-shopping-cart text-primary mr-1"></i>Add To Cart</a>
+                        <form action="{{ route('panier.ajouter') }}" method="post">
+                            @csrf
+                            <input type="hidden" name="id_produit" value="{{ $prod->idPro }}">
+                            
+                            <button type="submit">Add To Cart</button>
+                        </form>
                     @endempty
                     </div>
                 </div>
@@ -197,14 +213,25 @@
                             @isset($user)
                         @if ($user->is_blocked==0)
                             <a href="/detail/{{$prod->idPro}}" class="btn btn-sm text-dark p-0"><i class="fas fa-eye text-primary mr-1"></i>View Detail</a>
-                            <a href="/addPanier/{{$prod->idPro}}" class="btn btn-sm text-dark p-0"><i class="fas fa-shopping-cart text-primary mr-1"></i>Add To Cart</a>
+                            <form action="{{ route('panier.ajouter') }}" method="post">
+                                @csrf
+                                <input type="hidden" name="id_produit" value="{{ $prod->idPro }}">
+                                
+                                <button type="submit">Add To Cart</button>
+                            </form>
                         @else
                             <button class="btn btn-danger">your bloqued</button>
                         @endif
                         @endisset
                         @empty($user)
                             <a href="/detail/{{$prod->idPro}}" class="btn btn-sm text-dark p-0"><i class="fas fa-eye text-primary mr-1"></i>View Detail</a>
-                            <a href="/addPanier/{{$prod->idPro}}" class="btn btn-sm text-dark p-0"><i class="fas fa-shopping-cart text-primary mr-1"></i>Add To Cart</a>
+                            
+                            <form action="{{ route('panier.ajouter') }}" method="post">
+                                @csrf
+                                <input type="hidden" name="id_produit" value="{{ $prod->idPro }}">
+                                
+                                <button type="submit">Add To Cart</button>
+                            </form>
                         @endempty
                         </div>
                     </div>

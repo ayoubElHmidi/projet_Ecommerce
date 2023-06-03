@@ -33,7 +33,7 @@
                                             <label for="textarea-input" class="form-control-label">Description :</label>
                                         </div>
                                         <div class="col-12 col-md-9">
-                                            <textarea name="descriptionPro" id="textarea-input" value="{{ old('descriptionPro', $product->descriptionPro??null) }}" rows="9" class="form-control"></textarea>
+                                            <textarea name="descriptionPro" id="textarea-input"  rows="9" class="form-control">{{ old('descriptionPro', $product->descriptionPro??null) }}</textarea>
                                         </div>
                                     </div>
                                     @error('descriptionPro')
@@ -44,7 +44,7 @@
                                             <label for="password-input" class="form-control-label">Illustration :</label>
                                         </div>
                                         <div class="col-12 col-md-9">
-                                            <input type="file" id="file-input" name="photo" class="form-control-file">
+                                            <input type="file" id="file-input" name="photo" class="form-control-file" >
                                         </div>
                                     </div>
                                     
@@ -77,7 +77,7 @@
                                         </div>
                                         <div class="col-12 col-md-9">
                                             <select name="idCat" id="select" class="form-control">
-                                                @foreach ($data as $item)
+                                                @foreach ($categorie as $item)
                                                     <option value="{{$item->idCat}}">{{$item->nomCat}}</option>
                                                 @endforeach
                                             </select>

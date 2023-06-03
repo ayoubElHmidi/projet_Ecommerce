@@ -1,10 +1,9 @@
 <?php
 
 namespace App\Http\Controllers;
-<<<<<<< HEAD
-use App\Models\Categorie;
-use App\Models\Produit;
-=======
+
+
+
 use Illuminate\View\View;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
@@ -15,7 +14,6 @@ use App\Models\Categorie;
 use App\Models\Produit;
 use App\Models\Panie;
 use App\Models\User;
->>>>>>> baebe58916d12ff9e1b8596ef6e225555b1b6933
 class HomeController extends Controller
 {
     public function dashbord(){
@@ -30,16 +28,15 @@ class HomeController extends Controller
         $produits = Produit::all();
         return view('index',['categories' => $categories,"produits"=>$produits,'user'=>$user]);
     }
-<<<<<<< HEAD
 
-=======
+
+
     public function cart(){
         $id=Auth::id();
         $user=User::find($id);
         $categories = Categorie::all();
         return view('cart',['categories' => $categories,'user'=>$user]);
     }
->>>>>>> baebe58916d12ff9e1b8596ef6e225555b1b6933
     public function checkout(){
         
         return view('checkout');

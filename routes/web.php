@@ -6,7 +6,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\PanierController;
-
+use App\Http\Controllers\ContactController;
 
 // Ajouter un produit dans le panier
 Route::post('/panier/ajouter', [PanierController::class,'ajouterProduitDansPanier'])->name('panier.ajouter');
@@ -59,13 +59,14 @@ Route::get('/admin', [AdminController::class,'admin_index'])
     ->name('admin');
     
 Route::get('/admin-panel', [AdminController::class,"bladeAdmine"]
-)
-//->middleware(['auth', 'verified'])
-->name('admine');
+)->middleware(['auth', 'verified'])->name('admine');
+
 //view crud produit
 Route::get('/produits',[AdminController::class,'affichagePro'])->name('blade.affichagePro');
 Route::get('/produit/add',[AdminController::class,'ajouteProd'])->name('blade.ajouteProd');
 Route::get('/produit/edit/{idPro}',[AdminController::class,'edit'])->name('blade.edit');
+//filré produit par categorie
+Route::get('/produit/categorie/{idCat}',[AdminController::class,'filtreProParCat'])->name('filtreProParCat');
 //methode crud produit
 Route::post('/produit', [ProductController::class, 'store'])->name('ajouterpro');
 Route::get('/produit/update/{product}',[ProductController::class,'update'])->name('updatePro');
@@ -78,6 +79,13 @@ Route::get('/users',[AdminController::class,'affichageUser'])->name('blade.affic
 Route::get('/user/delete/{user}', [AdminController::class, 'deleteUser'])->name('deleteUser');
 Route::post('/user/block/{id}', [AdminController::class, 'blockUser'])->name('blockUser');
 Route::post('/user/unlock/{id}', [AdminController::class, 'unlockUser'])->name('unlockUser');
+//detail produit in page admin
+Route::get('/detaiAdmin/{idPro}',[AdminController::class,'detaiAdmin'])->name('detaiAdmin');
+//edit quantity
+Route::get('/editQte/{produit}',[AdminController::class,'editQte'])->name('editQte');
+//contact
+Route::post('/Contact/sendMessage', [ContactController::class, 'sendContact'])->name('sendContact');
+
 require __DIR__.'/auth.php';
 //------                               ayoub                      ------
 Route::get('/shop/{categorie}', [ProductController::class,'afficherProduitsParCategorie'])->name('produits.categorie');

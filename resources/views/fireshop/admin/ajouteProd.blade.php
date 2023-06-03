@@ -63,7 +63,7 @@
                                         </div>
                                         <div class="col-12 col-md-9">
                                             <select name="idCat" id="select" class="form-control">
-                                                @foreach ($data as $item)
+                                                @foreach ($categorie as $item)
                                                     <option value="{{$item->idCat}}">{{$item->nomCat}}</option>
                                                 @endforeach
                                             </select>

@@ -25,10 +25,10 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @foreach ($data as $pro)
+                                        @foreach ($produit as $pro)
                                             <tr>
-                                                <td><img src="{{$pro->photo}}" alt="photos" style="width: 50px;"></td>
-                                                <td>{{$pro->nomPro}}</td>
+                                                <td><img src="{{asset($pro->photo)}}" alt="photos" style="width: 50px;"></td>
+                                                <td><a href="detaiAdmin/{{$pro->idPro}}">{{$pro->nomPro}}</a></td>
                                                 <td>{{$pro->prixPro}}</td>
                                                 <td>{{$pro->qtePro}}</td>
                                                 <td>{{$pro->color}}</td>

@@ -64,6 +64,14 @@ create table commandes(
     Foreign Key (id) REFERENCES users(id),
     Foreign Key (idPanie) REFERENCES panies(idPanie)
 );
+CREATE table contacts( 
+    id int primary key auto_increment, 
+    name varchar(100), 
+    email VARCHAR(100), 
+    phone VARCHAR(100), 
+    subject VARCHAR(100), 
+    message text 
+);
 
 select * from produits where idCat = 1
 $produits = DB::table('produits')
