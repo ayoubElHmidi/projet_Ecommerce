@@ -8,6 +8,14 @@ use App\Models\Produit;
 use App\Models\User;
 class HomeController extends Controller
 {
+    public function checkout(){
+        $categories = Categorie::all();
+        if (Auth::check()){
+        return view('checkout',['categories'=>$categories]);}
+        else{
+            return redirect()->route('login');
+        }
+    }
 
     public function index(){
         $id=Auth::id();

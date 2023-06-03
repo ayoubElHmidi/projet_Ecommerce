@@ -26,9 +26,6 @@ Route::get('/panier/calculer-prix-total', [PanierController::class,'calculerPrix
 Route::get('/panier', [PanierController::class,'afficherPanier'])->name('panier');
 
 
-
-
-
 Route::get('/',[ProductController::class,'afficherProduitsAleatoires'])->name('index');
 Route::get('/recherche',[ProductController::class,'recherchePro'])->name('recherchePro');
 Route::get('/',[HomeController::class,'index'])->name('index');
@@ -37,6 +34,16 @@ Route::get('/contact',[HomeController::class,'contact'])->name('contact');
 Route::get('/detail/{pro}', [homeController::class, 'detail'])->name('detail');
 Route::get('/shop',[ProductController::class,'shop'])->name('shop');
 Route::get('/dashboard', [HomeController::class,'dashbord'])->middleware(['auth', 'verified'])->name('dashboard');
+
+// Route pour afficher la vue du formulaire de filtrage
+// Route pour le filtrage par prix
+Route::get('/products/filter',[ProductController::class,'filterByPrice'])->name('products.filter.price');
+
+// Route pour le filtrage par couleur
+Route::get('/products/filter', [ProductController::class,'filterByColor'])->name('products.filter.color');
+
+// Route pour le filtrage par taille
+Route::get('/products/filter', [ProductController::class,'filterBySize'])->name('products.filter.size');
 
 
 
