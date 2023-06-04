@@ -117,7 +117,7 @@ class AdminController extends Controller
     //
     public function editQte(Request $req,Produit $produit){
         $qte=$req->input('qte');
-        $produit->qtePro=$qte;
+        $produit->qtePro=$produit->qtePro+$qte;
         $produit->save();
         return redirect(route('admin'));
     }

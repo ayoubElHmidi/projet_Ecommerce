@@ -26,16 +26,28 @@
                                     </thead>
                                     <tbody>
                                         @foreach ($produit as $pro)
-                                            <tr>
+                                        @if ($pro->qtePro>=10)
+                                            <tr >
                                                 <td><img src="{{asset($pro->photo)}}" alt="photos" style="width: 50px;"></td>
-                                                <td><a href="detaiAdmin/{{$pro->idPro}}">{{$pro->nomPro}}</a></td>
+                                                <td><a href="{{route('detaiAdmin',['idPro'=>$pro->idPro])}}">{{$pro->nomPro}}</a></td>
                                                 <td>{{$pro->prixPro}}</td>
                                                 <td>{{$pro->qtePro}}</td>
                                                 <td>{{$pro->color}}</td>
                                                 <td>{{$pro->size}}</td>
-                                                <td><a href="/produit/edit/{{$pro->idPro}}">Edit</a> <a href="{{ route("deletePro", ['product' => $pro->idPro]) }}">delete</a>                                                </td>
-                                                
+                                                <td><a href="{{route('blade.edit',['idPro'=>$pro->idPro])}}">Edit</a> <a href="{{ route("deletePro", ['product' => $pro->idPro]) }}">delete</a>                                                </td>
                                             </tr>
+                                        @else
+                                            <tr style="background: rgb(245, 137, 137)">
+                                                <td><img src="{{asset($pro->photo)}}" alt="photos" style="width: 50px;"></td>
+                                                <td><a href="{{route('detaiAdmin',['idPro'=>$pro->idPro])}}" style="color: black">{{$pro->nomPro}}</a></td>
+                                                <td>{{$pro->prixPro}}</td>
+                                                <td>{{$pro->qtePro}}</td>
+                                                <td>{{$pro->color}}</td>
+                                                <td>{{$pro->size}}</td>
+                                                <td><a href="{{route('blade.edit',['idPro'=>$pro->idPro])}}">Edit</a> <a href="{{ route("deletePro", ['product' => $pro->idPro]) }}">delete</a>                                                </td>
+                                            </tr>
+                                        @endif
+                                            
                                         @endforeach
                                     </tbody>
                                 </table>

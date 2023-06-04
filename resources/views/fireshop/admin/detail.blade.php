@@ -86,7 +86,8 @@
                         <div class="input-group quantity mr-3" style="width: 130px;">
                             <form action="{{ route('editQte', ['produit' => $produit->idPro]) }}" method="get">
                                 @csrf
-                                <input type="number" name="qte" id="qte-input" class="form-control form-control-lg text-center bg-light text-dark" value="{{ $produit->qtePro }}" min="0">
+                                <p>{{ $produit->qtePro }}</p>+
+                                <input type="number" name="qte" id="qte-input" class="form-control form-control-lg text-center bg-light text-dark" value="0" min="0">
                                 <div class="input-group-append">
                                     <button type="submit" class="btn btn-primary">Edit Qte</button>
                                 </div>

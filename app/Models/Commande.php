@@ -17,6 +17,10 @@ class Commande extends Model
         'id',                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                
         'idPanie',
         'dateCom',
+        'numTel',
+        'adrs',
+        'etat'
+        
     ];
 
     public $timestamps = false; 
