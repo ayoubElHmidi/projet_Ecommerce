@@ -19,26 +19,25 @@
             <div class="col-lg-7 mb-5">
                 <div class="contact-form">
                     <div id="success"></div>
-                    <form name="sentMessage" id="contactForm" novalidate="novalidate">
+                    <form action="{{ route('sendContact') }}" method="post">
+                        @csrf
                         <div class="control-group">
-                            <input type="text" class="form-control" id="name" placeholder="Your Name"
-                                required="required" data-validation-required-message="Please enter your name" />
+                            <input type="text" class="form-control" id="name" placeholder="Your Name" name="name" />
                             <p class="help-block text-danger"></p>
                         </div>
                         <div class="control-group">
-                            <input type="email" class="form-control" id="email" placeholder="Your Email"
-                                required="required" data-validation-required-message="Please enter your email" />
+                            <input type="email" class="form-control" id="email" placeholder="Your Email" name="email" />
                             <p class="help-block text-danger"></p>
                         </div>
                         <div class="control-group">
-                            <input type="text" class="form-control" id="subject" placeholder="Subject"
-                                required="required" data-validation-required-message="Please enter a subject" />
+                            <input type="text" class="form-control" id="phone" placeholder="Your Phone" name="phone" />
+                        </div>
+                        <div class="control-group">
+                            <input type="text" class="form-control" id="subject" placeholder="Subject" name="subject" />
                             <p class="help-block text-danger"></p>
                         </div>
                         <div class="control-group">
-                            <textarea class="form-control" rows="6" id="message" placeholder="Message"
-                                required="required"
-                                data-validation-required-message="Please enter your message"></textarea>
+                            <textarea class="form-control" rows="6" id="message" placeholder="Message" name="message"></textarea>
                             <p class="help-block text-danger"></p>
                         </div>
                         <div>
@@ -46,6 +45,7 @@
                                 Message</button>
                         </div>
                     </form>
+                    
                 </div>
             </div>
             <div class="col-lg-5 mb-5">

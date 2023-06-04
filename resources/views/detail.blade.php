@@ -99,8 +99,6 @@
                             </button>
                         </div>
                     </div>
-              
-
                     <form action="{{ route('panier.ajouter') }}" method="post">
                         @csrf
                         <input type="hidden" name="id_produit" value="{{ $produits->idPro }}">

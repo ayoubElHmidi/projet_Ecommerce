@@ -21,7 +21,6 @@ INSERT INTO categories VALUES (4,"Vêtements de sport","Cette catégorie compren
 INSERT INTO categories VALUES (5,"Accessoires ",'Cette catégorie comprend tous les accessoires pour hommes, femmes et enfants, tels que des sacs, des portefeuilles, des chapeaux, des bijoux, des écharpes, des ceintures, des lunettes de soleil, des montres, des gants','cat5.jpg');
 INSERT INTO categories VALUES (6,"Chaussures ",' Cette catégorie comprend tous les types de chaussures pour hommes, femmes et enfants, telles que des chaussures de sport, des bottes, des bottines, des escarpins, des sandales, des chaussures de ville','cat6.jpg');
 
-=======
 create table users(
     id int primary key auto_increment,
     name varchar(100),
@@ -62,7 +61,29 @@ create table commandes(
     idPanie int,
     dateCom DATE  ,
     Foreign Key (id) REFERENCES users(id),
+    numTel varchar(20),
+    adrs VARCHAR(100),
     Foreign Key (idPanie) REFERENCES panies(idPanie)
+);
+CREATE TABLE produits_commandes (
+    idProCom INT PRIMARY KEY auto_increment,
+    id int    ,
+    idCom INT ,
+    idPro INT ,
+    qteC INT  ,
+    FOREIGN KEY (idCom) REFERENCES commandes(idCom) ,
+    FOREIGN KEY (idPro) REFERENCES produits(idPro)   
+);
+
+ADD COLUMN adrs VARCHAR(100);
+
+CREATE table contacts( 
+    id int primary key auto_increment, 
+    name varchar(100), 
+    email VARCHAR(100), 
+    phone VARCHAR(100), 
+    subject VARCHAR(100), 
+    message text 
 );
 
 select * from produits where idCat = 1

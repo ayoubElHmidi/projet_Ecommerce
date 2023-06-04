@@ -50,8 +50,10 @@
                 <h5 class="font-weight-bold">Total</h5>
                 <h5 class="font-weight-bold">${{ $prixTotal }}</h5>
             </div>
-            <button class="btn btn-block btn-primary my-3 py-3">Commnde</button>
-        </div>
+            <form method="GET" action="{{ route('checkout.index') }}">
+                <button class="btn btn-block btn-primary my-3 py-3" type="submit">Checkout</button>
+            </form>
+                    </div>
     </div>
 </div>
 

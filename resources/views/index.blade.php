@@ -90,19 +90,22 @@
                         </div>
                     </div>
                     <div class="card-footer d-flex justify-content-between bg-light border">
+                    <a href="/detail/{{$prod->idPro}}" class="btn btn-sm text-dark p-0"><i class="fas fa-eye text-primary mr-1"></i>View Detail</a>
                     @isset($user)
                         @if ($user->is_blocked==0)
-                        <a href="/detail/{{$prod->idPro}}" class="btn btn-sm text-dark p-0"><i class="fas fa-eye text-primary mr-1"></i>View Detail</a>
                         <form action="{{ route('panier.ajouter') }}" method="post">
                             @csrf
                             <input type="hidden" name="id_produit" value="{{ $prod->idPro }}">
                             
-                            <button type="submit">Ajouter au panier</button>
+                            <button type="submit">Add To Cart</button>
+                        </form>
                         @else
                             <button class="btn btn-danger">your bloqued</button>
                         @endif
                         @endisset
+
             </form>
+<!-- choof hna modifier -->
                     </div>
                 </div>
             </div> 
@@ -133,8 +136,6 @@
             </div>
         </div>
     </div>
-
-    
     <!-- Vendor Start -->
     <div class="container-fluid py-5">
         <div class="row px-xl-5">

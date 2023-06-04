@@ -26,6 +26,7 @@ class HomeController extends Controller
         return view('index',['categories' => $categories,"produits"=>$produits,'user'=>$user]);
     }
 
+
     public function contact(){
         $categories = Categorie::all();
         return view('contact',["categories"=>$categories]);
