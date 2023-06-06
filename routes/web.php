@@ -8,6 +8,7 @@ use App\Http\Controllers\ProductController;
 use App\Http\Controllers\PanierController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\CommandeController;
+use App\Http\Controllers\CategorieController;
 
 
 // Ajouter un produit dans le panier
@@ -94,6 +95,11 @@ Route::get('/detaiAdmin/{idPro}',[AdminController::class,'detaiAdmin'])->name('d
 Route::get('/editQte/{produit}',[AdminController::class,'editQte'])->name('editQte');
 //contact
 Route::post('/Contact/sendMessage', [ContactController::class, 'sendContact'])->name('sendContact');
+//view crud categorie
+Route::get('/categorie/add',[CategorieController::class,'ajouteCat'])->name('blade.ajouteCat');
+//methode crude categorie
+Route::post('/categorie/ajoute',[CategorieController::class,'addCat'])->name('addCat');
+Route::post('/categorie/delete/{Categorie}',[CategorieController::class,'deleteCat'])->name('deleteCat');
 
 require __DIR__.'/auth.php';
 //------                               ayoub                      ------

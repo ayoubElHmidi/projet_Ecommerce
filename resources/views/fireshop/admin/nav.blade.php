@@ -30,7 +30,14 @@
 
     <link href="https://cdn.jsdelivr.net/npm/weathericons@2.1.0/css/weather-icons.css" rel="stylesheet" />
     <link href="https://cdn.jsdelivr.net/npm/fullcalendar@3.9.0/dist/fullcalendar.min.css" rel="stylesheet" />
+    <style>
+        .delete-form {
+            margin-top: 10px;
+            font-weight: bold;
+            color: red;
+}
 
+    </style>
 
 </head>
 
@@ -49,6 +56,7 @@
                         @foreach ($categorie as $cat)
                         <li><i class="fa fa-puzzle-piece"></i><a href="{{Route('filtreProParCat',['idCat'=>$cat->idCat])}}">{{$cat->nomCat}}</a></li>    
                         @endforeach
+                        <li><i class="fa fa-puzzle-piece"></i><a href="{{route("blade.ajouteCat")}}">add categorie</a></li>    
                     </ul>
                 </li>
                 

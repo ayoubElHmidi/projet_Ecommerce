@@ -39,7 +39,7 @@
                     <div class="cat-item d-flex flex-column border mb-4" style="padding: 30px;">
                         <p class="text-right">15 Products</p>
                         <a href="" class="cat-img position-relative overflow-hidden mb-3">
-                            <img class="{{asset($cat->photoCat)}}" src="img/cat-1.jpg" alt="">
+                            <img class="{{asset($cat->photoCat)}}" src="storage/categorie/{{$cat->photoCat}}" alt="">
                         </a>
                         <h5 class="font-weight-semi-bold m-0">{{$cat->nomCat}}</h5>
                     </div>
@@ -102,7 +102,15 @@
                         @else
                             <button class="btn btn-danger">your bloqued</button>
                         @endif
-                        @endisset
+                    @endisset
+                    @empty($user)
+                        <form action="{{ route('panier.ajouter') }}" method="post">
+                            @csrf
+                            <input type="hidden" name="id_produit" value="{{ $prod->idPro }}">
+                            
+                            <button type="submit">Add To Cart</button>
+                        </form>
+                    @endempty
 
             </form>
 <!-- choof hna modifier -->

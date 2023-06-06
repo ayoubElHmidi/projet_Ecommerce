@@ -9,6 +9,8 @@ use Illuminate\Http\RedirectResponse;
 use App\Models\Produit;
 use App\Models\Categorie;
 use App\Models\Contact;
+use App\Models\ProduitCommande;
+use Illuminate\Support\Facades\DB;
 class AdminController extends Controller
 {
     public function admin_index(User $user): RedirectResponse
@@ -25,7 +27,12 @@ class AdminController extends Controller
         $user=User::find($id);
         $countUser=$user->count();
         $categorie=Categorie::all();
-        return view("fireshop.admin.index",compact("countUser",'categorie','contact'));
+        $commande = ProduitCommande::join('commandes', 'produits_commandes.idCom', '=', 'commandes.idCom')
+            ->join('produits', 'produits_commandes.idPro', '=', 'produits.idPro')
+            ->join('users', 'produits_commandes.id', '=', 'users.id')
+            ->select('produits_commandes.*','commandes.*','produits.*','users.*')
+            ->get();
+        return view("fireshop.admin.index",compact("countUser",'categorie','contact','commande'));
     }
     //dashboard ajoute admin
     public function create():view
