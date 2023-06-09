@@ -9,7 +9,7 @@ use App\Models\Commande;
 use App\Models\ProduitCommande;
 use App\Models\Categorie;
 use App\Models\Produit;
-use Illuminate\Console\Command;
+
 
 class CommandeController extends Controller
 {
@@ -83,7 +83,7 @@ class CommandeController extends Controller
             $produitCommande->qteC = $produit->qteV;
             $produitCommande->save();
         
-            // Mettre à jour la quantité dans la table "produits"
+            // Mettre à jour la quantité dans la table "produits"  (na9soo qte li tbaa3t )
             $produitToUpdate = Produit::find($produit->idPro);
             $produitToUpdate->qtePro = $produitToUpdate->qtePro - $produitCommande->qteC;
             $produitToUpdate->save();

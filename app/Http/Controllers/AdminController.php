@@ -10,7 +10,6 @@ use App\Models\Categorie;
 use App\Models\Contact;
 use App\Models\Produit;
 use App\Models\Commande;
-use App\Models\ProduitCommande;
 class AdminController extends Controller
 {
     public function admin_index(User $user): RedirectResponse

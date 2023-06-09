@@ -39,22 +39,10 @@ Route::post('/place-order', [CommandeController::class,'placeOrder'])->name('pla
 Route::get('/',[ProductController::class,'afficherProduitsAleatoires'])->name('index');
 Route::get('/recherche',[ProductController::class,'recherchePro'])->name('recherchePro');
 Route::get('/',[HomeController::class,'index'])->name('index');
-Route::get('/contact',[HomeController::class,'contact'])->name('contact');
+Route::get('/contact',[ContactController::class,'contact'])->name('contact');
 Route::get('/detail/{pro}', [homeController::class, 'detail'])->name('detail');
 Route::get('/shop',[ProductController::class,'shop'])->name('shop');
 Route::get('/dashboard', [HomeController::class,'dashbord'])->middleware(['auth', 'verified'])->name('dashboard');
-
-// Route pour afficher la vue du formulaire de filtrage
-// Route pour le filtrage par prix
-Route::get('/products/filter',[ProductController::class,'filterByPrice'])->name('products.filter.price');
-
-// Route pour le filtrage par couleur
-Route::get('/products/filter', [ProductController::class,'filterByColor'])->name('products.filter.color');
-
-// Route pour le filtrage par taille
-Route::get('/products/filter', [ProductController::class,'filterBySize'])->name('products.filter.size');
-
-
 
 
 Route::get('/dashboard', function () {
@@ -106,7 +94,6 @@ Route::post('/categorie/ajoute',[CategorieController::class,'addCat'])->name('ad
 Route::post('/categorie/delete/{Categorie}',[CategorieController::class,'deleteCat'])->name('deleteCat');
 
 require __DIR__.'/auth.php';
-//------                               ayoub                      ------
 Route::get('/shop/{categorie}', [ProductController::class,'afficherProduitsParCategorie'])->name('produits.categorie');
 
 

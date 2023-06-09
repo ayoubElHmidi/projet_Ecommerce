@@ -42,7 +42,6 @@
     </div>
 </div>
 <div class="col-lg-4">
-
     <div class="card border-secondary mb-5">
 
         <div class="card-footer border-secondary bg-transparent">
@@ -53,7 +52,7 @@
             <form method="GET" action="{{ route('checkout.index') }}">
                 <button class="btn btn-block btn-primary my-3 py-3" type="submit">Checkout</button>
             </form>
-                    </div>
+        </div>
     </div>
 </div>
 

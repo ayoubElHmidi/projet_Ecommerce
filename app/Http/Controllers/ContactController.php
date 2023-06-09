@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Contact;
+use App\Models\Categorie;
+
 class ContactController extends Controller
 {
 
@@ -23,5 +25,9 @@ class ContactController extends Controller
           // 
           return redirect()->back();
       }
+      public function contact(){
+        $categories = Categorie::all();
+        return view('contact',["categories"=>$categories]);
+    }
   
 }

@@ -1,18 +1,10 @@
 <?php
-
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\User;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\View\View;
-use Illuminate\Support\Facades\Gate;
 use Illuminate\Http\RedirectResponse;
-use App\Models\Produit;
 use App\Models\Categorie;
 use App\Models\Contact;
-use App\Models\ProduitCommande;
-use Illuminate\Support\Facades\DB;
 
 class CategorieController extends Controller
 {

@@ -27,11 +27,7 @@ class HomeController extends Controller
     }
 
 
-    public function contact(){
-        $categories = Categorie::all();
-        return view('contact',["categories"=>$categories]);
 
-    }
 public function detail($pro)
 {
     $id=Auth::id();

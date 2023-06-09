@@ -4,10 +4,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Categorie;
 use App\Models\Contact;
-use App\Models\User;
 use App\Models\Commande;
 use App\Models\ProduitCommande;
-use App\Models\Produit;
 
 
 class ProduitCommandeController extends Controller
