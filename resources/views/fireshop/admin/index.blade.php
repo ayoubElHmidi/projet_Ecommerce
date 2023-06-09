@@ -98,32 +98,27 @@
                                         <table class="table ">
                                             <thead>
                                                 <tr>
-                                                    <th class="serial">#</th>
-                                                    <th>avatar</th>
-                                                    <th>ID</th>
-                                                    <th>Name</th>
-                                                    <th>Product</th>
-                                                    <th>Quantity</th>
+                                                    <th class="serial">#Name</th>                                          
+                                                    <th>ID commande</th>
                                                     <th>Status</th>
+                                                    <th>detail</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                @foreach ($commande as $C)
+                                                @foreach ($commandes as $C)
                                                     <tr>
-                                                        <td class="serial">{{$C->idProCom}}.</td>
-                                                        <td class="avatar">
-                                                            <div class="round-img">
-                                                                <a href="#"><img class="rounded-circle" src="images/avatar/1.jpg" alt=""></a>
-                                                            </div>
-                                                        </td>
-                                                        <td> #5469 </td>
                                                         <td>  <span class="name">{{$C->name}}</span> </td>
-                                                        <td> <span class="product">{{$C->nomPro}}</span> </td>
-                                                        <td><span class="count">{{$C->qteC}}</span></td>
+                                                        <td> <span class="product">{{$C->idCom}}</span> </td>
                                                         <td>
-                                                            <span class="badge badge-complete">Complete</span>
+                                                            <span class="badge badge-complete">{{$C->etat}}</span>
                                                         </td>
+                                                  <td>
+                                                    <form action="" >
+                                                    <button class="badge badge-complete" type="submit"><a href="/commade/{{$C->idCom}}">detail</a>  </button>
+                                                    </form>
+                                                 </td>
                                                     </tr>
+                                          
                                                 @endforeach
                                                 
                                                 

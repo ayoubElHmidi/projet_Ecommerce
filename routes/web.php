@@ -9,7 +9,11 @@ use App\Http\Controllers\PanierController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\CommandeController;
 use App\Http\Controllers\CategorieController;
+use App\Http\Controllers\ProduitCommandeController;
 
+
+Route::get('/commade/{idCom}',[ProduitCommandeController::class,'getCommandeDetails']);
+Route::post('/modifier-etat-commande',[ProduitCommandeController::class,'modifierEtatCommande'])->name('modifierEtatCommande');
 
 // Ajouter un produit dans le panier
 Route::post('/panier/ajouter', [PanierController::class,'ajouterProduitDansPanier'])->name('panier.ajouter');
@@ -67,7 +71,7 @@ Route::middleware('auth')->group(function () {
 Route::get('/admin', [AdminController::class,'admin_index'])
     //->middleware(['auth', 'verified'])
     ->name('admin');
-    
+
 Route::get('/admin-panel', [AdminController::class,"bladeAdmine"]
 )->middleware(['auth', 'verified'])->name('admine');
 

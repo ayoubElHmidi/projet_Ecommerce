@@ -95,8 +95,5 @@ class CommandeController extends Controller
         // Rediriger vers la page d'accueil avec un message de succès
         return redirect()->route('index')->with('success', 'La commande a été effectuée avec succès.');
     }
-    public function showCommmand(){
-       $commande= Command::All();
-       return view('fireshp.admin.index',['commande'=>$commande]);
-    }
+
 }

@@ -2,7 +2,7 @@
 <html>
 <head>
 	<meta charset="utf-8">
-	<title>Form-v6 by Colorlib</title>
+	<title>login</title>
 	<!-- Mobile Specific Metas -->
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 	<!-- Font-->
@@ -18,7 +18,7 @@
 			</div>
 			<form method="POST" class="form-detail" action="{{ route('login') }}">
 				@csrf
-				<h2>Login Form</h2>
+				<h2>Login E SHOPPER</h2>
 				<div class="form-row">
 					<x-text-input id="email" class="input-text" 
 									type="email" 
@@ -51,6 +51,9 @@
 					<x-primary-button class="register">
 						{{ __('Log in') }}
 					</x-primary-button>
+					<div class="form-row-last">
+				<a href="{{route('register')}}" class="register">Register</a>
+					</div>
 				</div>
 			</form>
 		</div>

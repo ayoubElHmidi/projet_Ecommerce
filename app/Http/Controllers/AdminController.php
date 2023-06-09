@@ -6,11 +6,11 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\View\View;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Http\RedirectResponse;
-use App\Models\Produit;
 use App\Models\Categorie;
 use App\Models\Contact;
+use App\Models\Produit;
+use App\Models\Commande;
 use App\Models\ProduitCommande;
-use Illuminate\Support\Facades\DB;
 class AdminController extends Controller
 {
     public function admin_index(User $user): RedirectResponse
@@ -27,12 +27,14 @@ class AdminController extends Controller
         $user=User::find($id);
         $countUser=$user->count();
         $categorie=Categorie::all();
-        $commande = ProduitCommande::join('commandes', 'produits_commandes.idCom', '=', 'commandes.idCom')
-            ->join('produits', 'produits_commandes.idPro', '=', 'produits.idPro')
-            ->join('users', 'produits_commandes.id', '=', 'users.id')
-            ->select('produits_commandes.*','commandes.*','produits.*','users.*')
-            ->get();
-        return view("fireshop.admin.index",compact("countUser",'categorie','contact','commande'));
+        $commandes = Commande::join('produits_commandes', 'commandes.idCom', '=', 'produits_commandes.idCom')
+        ->join('users', 'produits_commandes.id', '=', 'users.id')
+        ->join('produits', 'produits_commandes.idPro', '=', 'produits.idPro')
+        ->select('users.name', 'commandes.idCom', 'commandes.etat')
+        ->groupBy('commandes.idCom', 'users.name', 'commandes.etat')
+        ->get();
+    
+        return view("fireshop.admin.index",compact("countUser",'categorie','contact','commandes'));
     }
     //dashboard ajoute admin
     public function create():view
