@@ -12,89 +12,111 @@ use App\Http\Controllers\CategorieController;
 use App\Http\Controllers\ProduitCommandeController;
 
 
-Route::get('/commade/{idCom}',[ProduitCommandeController::class,'getCommandeDetails']);
-Route::post('/modifier-etat-commande',[ProduitCommandeController::class,'modifierEtatCommande'])->name('modifierEtatCommande');
-
-// Ajouter un produit dans le panier
-Route::post('/panier/ajouter', [PanierController::class,'ajouterProduitDansPanier'])->name('panier.ajouter');
-
-// Supprimer un produit du panier (pour utilisateur connecté)
-Route::post('/panier/supprimer-produit', [PanierController::class, 'supprimerProduitDuPanier'])->name('panier.supprimerProduit');
-
-// Mettre à jour la quantité d'un produit dans le panier
-Route::post('/panier/mettre-a-jour', [PanierController::class,'mettreAJourQuantiteProduit'])->name('panier.mettreAJour');
-
-// Calculer le prix TTC d'un produit
-Route::get('/produit/calculer-prix/{idProduit}/{quantite}', [PanierController::class,'calculerPrixTTCProduit'])->name('produit.calculerPrixTTC');
-
-// Calculer le prix total du panier
-Route::get('/panier/calculer-prix-total', [PanierController::class,'calculerPrixTotalPanier'])->name('panier.calculerPrixTotal');
-// afficher panier 
-Route::get('/panier', [PanierController::class,'afficherPanier'])->name('panier');
-
-Route::get('/checkout', [CommandeController::class, 'index'])->name('checkout.index');
-Route::post('/place-order', [CommandeController::class,'placeOrder'])->name('placeOrder');
+route::controller(ProduitCommandeController::class)->group(function(){
+    Route::get('/commade/{idCom}','getCommandeDetails');    
+    Route::post('/modifier-etat-commande','modifierEtatCommande')->name('modifierEtatCommande');
+});
 
 
-Route::get('/',[ProductController::class,'afficherProduitsAleatoires'])->name('index');
-Route::get('/recherche',[ProductController::class,'recherchePro'])->name('recherchePro');
-Route::get('/',[HomeController::class,'index'])->name('index');
-Route::get('/contact',[ContactController::class,'contact'])->name('contact');
-Route::get('/detail/{pro}', [homeController::class, 'detail'])->name('detail');
-Route::get('/shop',[ProductController::class,'shop'])->name('shop');
-Route::get('/dashboard', [HomeController::class,'dashbord'])->middleware(['auth', 'verified'])->name('dashboard');
+route::controller(PanierController::class)->group(function(){
+    // Ajouter un produit dans le panier
+    Route::post('/panier/ajouter', 'ajouterProduitDansPanier')->name('panier.ajouter');
+
+    // Supprimer un produit du panier (pour utilisateur connecté)
+    Route::post('/panier/supprimer-produit', 'supprimerProduitDuPanier')->name('panier.supprimerProduit');
+
+    // Mettre à jour la quantité d'un produit dans le panier
+    Route::post('/panier/mettre-a-jour','mettreAJourQuantiteProduit')->name('panier.mettreAJour');
+
+    // Calculer le prix TTC d'un produit
+    Route::get('/produit/calculer-prix/{idProduit}/{quantite}', 'calculerPrixTTCProduit')->name('produit.calculerPrixTTC');
+
+    // Calculer le prix total du panier
+    Route::get('/panier/calculer-prix-total', 'calculerPrixTotalPanier')->name('panier.calculerPrixTotal');
+    // afficher panier 
+    Route::get('/panier', 'afficherPanier')->name('panier');
+
+});
+Route::controller(CommandeController::class)->group(function(){
+    Route::get('/checkout',  'index')->name('checkout.index');
+    Route::post('/place-order', 'placeOrder')->name('placeOrder');
+});
+
+Route::controller(HomeController::class)->group(function(){
+    Route::get('/','index')->name('index');
+    Route::get('/detail/{pro}',  'detail')->name('detail');
+    Route::get('/dashboard', 'dashbord')->middleware(['auth', 'verified'])->name('dashboard');
+});
+
+Route::controller(ProductController::class)->group(function(){
+    
+    Route::get('/recherche','recherchePro')->name('recherchePro');
+    Route::get('/shop','shop')->name('shop');
+    //methode crud produit
+    Route::post('/produit',  'store')->name('ajouterpro');
+    Route::get('/produit/update/{product}','update')->name('updatePro');
+    Route::get('/produit/delete/{product}',  'destroy')->name('deletePro');
+    Route::get('/shop/{categorie}', 'afficherProduitsParCategorie')->name('produits.categorie');
+});
 
 
-Route::get('/dashboard', function () {
 
-    return view('dashboard');
- 
-})->middleware(['auth', 'verified'])->name('dashboard');
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-Route::get('/admin', [AdminController::class,'admin_index'])
-    //->middleware(['auth', 'verified'])
-    ->name('admin');
 
-Route::get('/admin-panel', [AdminController::class,"bladeAdmine"]
-)->middleware(['auth', 'verified'])->name('admine');
 
-//view crud produit
-Route::get('/produits',[AdminController::class,'affichagePro'])->name('blade.affichagePro');
-Route::get('/produit/add',[AdminController::class,'ajouteProd'])->name('blade.ajouteProd');
-Route::get('/produit/edit/{idPro}',[AdminController::class,'edit'])->name('blade.edit');
-//filré produit par categorie
-Route::get('/produit/categorie/{idCat}',[AdminController::class,'filtreProParCat'])->name('filtreProParCat');
-//methode crud produit
-Route::post('/produit', [ProductController::class, 'store'])->name('ajouterpro');
-Route::get('/produit/update/{product}',[ProductController::class,'update'])->name('updatePro');
-Route::get('/produit/delete/{product}', [ProductController::class, 'destroy'])->name('deletePro');
-//ajoute administratour
-Route::get('/admin/create', [AdminController::class,'create'])->name('blade.createPro');
-Route::post('/admin', [AdminController::class, 'store'])->name('admin.store');
-//user
-Route::get('/users',[AdminController::class,'affichageUser'])->name('blade.affichageUser');
-Route::get('/user/delete/{user}', [AdminController::class, 'deleteUser'])->name('deleteUser');
-Route::post('/user/block/{id}', [AdminController::class, 'blockUser'])->name('blockUser');
-Route::post('/user/unlock/{id}', [AdminController::class, 'unlockUser'])->name('unlockUser');
-//detail produit in page admin
-Route::get('/detaiAdmin/{idPro}',[AdminController::class,'detaiAdmin'])->name('detaiAdmin');
-//edit quantity
-Route::get('/editQte/{produit}',[AdminController::class,'editQte'])->name('editQte');
+Route::controller(AdminController::class)->group(function(){
+    Route::get('/admin', 'admin_index')->name('admin');
+
+    Route::get('/admin-panel', "bladeAdmine"
+    )->middleware(['auth', 'verified'])->name('admine');
+    //view crud produit
+    Route::get('/produits','affichagePro')->name('blade.affichagePro');
+    Route::get('/produit/add','ajouteProd')->name('blade.ajouteProd');
+    Route::get('/produit/edit/{idPro}','edit')->name('blade.edit');
+    //filré produit par categorie
+    Route::get('/produit/categorie/{idCat}','filtreProParCat')->name('filtreProParCat');
+    //ajoute administratour
+    Route::get('/admin/create', 'create')->name('blade.createPro');
+    Route::post('/admin',  'store')->name('admin.store');
+    //user
+    Route::get('/users','affichageUser')->name('blade.affichageUser');
+    Route::get('/user/delete/{user}',  'deleteUser')->name('deleteUser');
+    Route::post('/user/block/{id}',  'blockUser')->name('blockUser');
+    Route::post('/user/unlock/{id}',  'unlockUser')->name('unlockUser');
+    //detail produit in page admin
+    Route::get('/detaiAdmin/{idPro}','detaiAdmin')->name('detaiAdmin');
+    //edit quantity
+    Route::get('/editQte/{produit}','editQte')->name('editQte');
+
+});
+
+
+
+Route::controller(CategorieController::class)->group(function(){
+    //view crud categorie
+    Route::get('/categorie/add','ajouteCat')->name('blade.ajouteCat');
+    //methode crude categorie
+    Route::post('/categorie/ajoute','addCat')->name('addCat');
+    Route::post('/categorie/delete/{Categorie}','deleteCat')->name('deleteCat');    
+});
+
+Route::get('/contact',[ContactController::class,'contact'])->name('contact');
 //contact
 Route::post('/Contact/sendMessage', [ContactController::class, 'sendContact'])->name('sendContact');
-//view crud categorie
-Route::get('/categorie/add',[CategorieController::class,'ajouteCat'])->name('blade.ajouteCat');
-//methode crude categorie
-Route::post('/categorie/ajoute',[CategorieController::class,'addCat'])->name('addCat');
-Route::post('/categorie/delete/{Categorie}',[CategorieController::class,'deleteCat'])->name('deleteCat');
+
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->middleware(['auth', 'verified'])->name('dashboard');
+
+
 
 require __DIR__.'/auth.php';
-Route::get('/shop/{categorie}', [ProductController::class,'afficherProduitsParCategorie'])->name('produits.categorie');
+
 
 
 
