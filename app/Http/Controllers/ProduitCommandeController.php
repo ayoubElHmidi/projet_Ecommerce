@@ -6,6 +6,7 @@ use App\Models\Categorie;
 use App\Models\Contact;
 use App\Models\Commande;
 use App\Models\ProduitCommande;
+use Illuminate\Support\Facades\Auth;
 
 
 class ProduitCommandeController extends Controller
@@ -23,6 +24,7 @@ class ProduitCommandeController extends Controller
         ->get();
     
         return view("fireshop.admin.detailCommand",compact('contact','resultats','categorie'));
+
     }
     public function modifierEtatCommande(Request $request)
     {
@@ -37,6 +39,24 @@ class ProduitCommandeController extends Controller
         return redirect()->route('admin')->with('success', 'L\'état de la commande a été modifié avec succès.');
     }
     
-    
+
+
+public function suivreCommande()
+{
+    // Obtenez l'ID du client connecté
+    $clientId = Auth::id();
+    $categorie=Categorie::all();
+
+        $resultats = Commande::join('produits_commandes', 'commandes.idCom', '=', 'produits_commandes.idCom')
+        ->join('users', 'produits_commandes.id', '=', 'users.id')
+        ->join('produits', 'produits_commandes.idPro', '=', 'produits.idPro')
+        ->select('users.name', 'commandes.idCom', 'commandes.etat')
+        ->where('commandes.id', $clientId)
+        ->groupBy('commandes.idCom', 'users.name', 'commandes.etat')
+        ->get();
+
+    return view('SuiverCommmmand', ['resultats' => $resultats , 'categories'=>$categorie]);
+}
+
 }
 ?>

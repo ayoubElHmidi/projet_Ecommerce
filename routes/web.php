@@ -15,6 +15,7 @@ use App\Http\Controllers\ProduitCommandeController;
 route::controller(ProduitCommandeController::class)->group(function(){
     Route::get('/commade/{idCom}','getCommandeDetails');    
     Route::post('/modifier-etat-commande','modifierEtatCommande')->name('modifierEtatCommande');
+    Route::get('/suivreCommande', 'suivreCommande')->name('Commande');
 });
 
 
@@ -40,6 +41,7 @@ route::controller(PanierController::class)->group(function(){
 Route::controller(CommandeController::class)->group(function(){
     Route::get('/checkout',  'index')->name('checkout.index');
     Route::post('/place-order', 'placeOrder')->name('placeOrder');
+    
 });
 
 Route::controller(HomeController::class)->group(function(){
@@ -51,6 +53,9 @@ Route::controller(HomeController::class)->group(function(){
 Route::controller(ProductController::class)->group(function(){
     
     Route::get('/recherche','recherchePro')->name('recherchePro');
+    Route::get('/shop','filterByPrice')->name('prix');
+    Route::get('/shop','filterByColor')->name('color');
+    Route::get('/shop','filterBySize')->name('size');
     Route::get('/shop','shop')->name('shop');
     //methode crud produit
     Route::post('/produit',  'store')->name('ajouterpro');

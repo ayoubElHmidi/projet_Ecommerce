@@ -3,8 +3,6 @@
     @include('fireshop.admin.nav')
     <!-- /header -->
         <!-- Header-->
-
-        
         <div class="content">
             <div class="animated fadeIn">
                 <div class="row">
